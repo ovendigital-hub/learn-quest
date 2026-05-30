@@ -76,6 +76,9 @@
   .sec p{margin:6px 0}
   .example{background:#fff8f3;border-left:4px solid var(--maths);border-radius:10px;padding:12px 14px}
   .tip{background:#e7f9ef;border-left:4px solid var(--good);border-radius:10px;padding:12px 14px}
+  .worked{background:#eef3ff;border-left:4px solid var(--brand);border-radius:10px;padding:12px 14px}
+  .worked-h{font-weight:800;color:var(--brand);margin-bottom:6px}
+  .sec p{margin:8px 0;line-height:1.6}
   .mascot{display:flex;gap:10px;align-items:flex-start;background:#f3f0ff;border-radius:12px;padding:12px 14px}
   .mascot .face{font-size:1.6rem}
   kbd{background:#eef1f8;border-radius:6px;padding:2px 7px;font-family:inherit;font-weight:bold}
@@ -142,72 +145,139 @@ const SUBJECTS = [
 const CURRICULUM = { lessons: [
 
 /* ---------- FULL SAMPLE LESSON: MATHS · FRACTIONS (Week 1) ---------- */
+/* ===== MATHS · Fractions — 5 day-sessions ===== */
 {
-  id:'maths-fractions', subject:'maths', week:1, title:'Fractions', emoji:'🍕',
-  blurb:'Concept, types, equivalent, comparing, and +/−/× of all fraction types.',
-  objective:"By the end you'll: name fractions; tell proper, improper & mixed apart; find equivalent fractions; compare fractions; and add, subtract & multiply all kinds of fractions — even in word problems!",
+  id:'maths-d1', subject:'maths', week:1, day:1, title:'Day 1 · What is a Fraction?', emoji:'🍕',
+  blurb:'The meaning of a fraction, numerator & denominator, fractions of a collection, number line.',
+  objective:"Understand what a fraction means, name the numerator and denominator, read fractions, find a fraction of a group of objects, and place fractions on a number line.",
   sections:[
-    {type:'mascot', text:"Hi! I'm <b>Hooty</b> the owl 🦉. Let's slice up some pizzas and become fraction champions. Tap things as we go!"},
-    {type:'text', h:'🍕 1. What is a fraction?', html:"A <b>fraction</b> shows a <b>part of a whole</b>. If we cut a pizza into <b>4 equal slices</b> and take <b>3</b>, we have <b>3/4</b> of the pizza."},
+    {type:'mascot', text:"Hi! I'm <b>Hooty</b> the owl 🦉. Let's start fractions from the very beginning — with pizzas, chocolate and marbles. Tap things as we go!"},
+    {type:'text', h:'🍕 A fraction = an equal part of a whole', html:"Imagine one whole pizza. If we cut it into <b>4 EQUAL slices</b> and take <b>3</b> of them, we have eaten <b>three-fourths</b> of the pizza, written <b>3/4</b>.<br><br>A <b>fraction</b> is a number that names <b>part of a whole</b> when the whole is split into <b>equal</b> parts. The word 'equal' is very important — if the slices are different sizes, we cannot call them a fair fraction!"},
     {type:'frac'},
-    {type:'text', h:'🔢 The two numbers', html:"The <b>top</b> number is the <b>numerator</b> (how many parts we took). The <b>bottom</b> number is the <b>denominator</b> (how many equal parts in all).<br><br>In <kbd>3/4</kbd> → numerator = <b>3</b>, denominator = <b>4</b>."},
-    {type:'practice', q:{
-      text:"A chocolate bar is split into 5 equal pieces and you eat 2. What fraction did you eat?",
-      choices:["5/2","2/5","2/3","1/5"], answer:1, explain:"2 pieces eaten out of 5 equal pieces = 2/5."}},
-
-    {type:'text', h:'📏 2. Types of fractions', html:"<b>Proper</b>: top &lt; bottom (e.g. 3/8) — less than one whole.<br><b>Improper</b>: top ≥ bottom (e.g. 9/4) — one whole or more.<br><b>Mixed</b>: a whole number + a fraction (e.g. 2¼)."},
-    {type:'example', html:"<b>Improper → Mixed:</b> 7/3 → 3 goes into 7 twice (6) with 1 left over → <b>2⅓</b>.<br><b>Mixed → Improper:</b> 2¼ → (2×4)+1 = 9 over 4 → <b>9/4</b>."},
-    {type:'practice', q:{
-      text:"Which of these is an improper fraction?",
-      choices:["3/7","2/5","9/4","1/2"], answer:2, explain:"9/4 has the top (9) bigger than the bottom (4), so it's improper."}},
-
-    {type:'text', h:'🟰 3. Equivalent fractions', html:"Multiply or divide the top AND bottom by the same number and the value stays the same.<br><br><kbd>1/2 = 2/4 = 3/6 = 4/8</kbd> — all the same amount!"},
-    {type:'tip', html:"<b>Simplify</b> by dividing top &amp; bottom by the same number: 6/8 ÷ 2 = <b>3/4</b>."},
-    {type:'practice', q:{
-      text:"Which fraction is equivalent to 2/3?",
-      choices:["3/4","4/6","2/6","5/6"], answer:1, explain:"Multiply top & bottom by 2: 2/3 = 4/6."}},
-
-    {type:'text', h:'⚖️ 4. Comparing fractions', html:"<b>Same bottom</b>: bigger top wins → 7/9 &gt; 5/9.<br><b>Same top</b>: bigger bottom = smaller pieces → 1/4 &lt; 1/3.<br><b>Different bottoms</b>: make the bottoms the same, OR <b>cross-multiply</b>."},
-    {type:'example', html:"<b>Compare 2/3 and 3/4</b> by cross-multiplying: 2×4 = <b>8</b>, 3×3 = <b>9</b>. Since 8 &lt; 9, <b>2/3 &lt; 3/4</b>."},
-    {type:'practice', q:{
-      text:"Which is greater: 3/5 or 3/8?",
-      choices:["3/5","3/8","They are equal","Can't tell"], answer:0, explain:"Same top (3). Fewer, bigger pieces wins → 3/5 is greater."}},
-
-    {type:'text', h:'➕➖ 5. Adding & subtracting fractions', html:"<b>Same bottom</b>: add/subtract the tops, keep the bottom → 2/7 + 3/7 = 5/7.<br><b>Different bottoms</b>: first make the bottoms the same (use the LCM), then add/subtract.<br><b>Mixed numbers</b>: add the whole parts and the fraction parts (or turn them into improper fractions first)."},
-    {type:'example', html:"<b>Unlike:</b> 1/2 + 1/3 → LCM of 2 and 3 is 6 → 3/6 + 2/6 = <b>5/6</b>.<br><b>Mixed:</b> 1½ + 2¾ → wholes 1+2 = 3, fractions ½+¾ = 5/4 = 1¼ → <b>4¼</b>."},
-    {type:'practice', q:{
-      text:"What is 3/4 − 1/6 ?",
-      choices:["2/2","7/12","1/2","5/12"], answer:1, explain:"LCM of 4 and 6 is 12 → 9/12 − 2/12 = 7/12."}},
-
-    {type:'text', h:'✖️ 6. Multiplying fractions', html:"<b>Fraction × fraction</b>: multiply the tops, multiply the bottoms, then simplify → 2/3 × 3/5 = 6/15 = 2/5.<br>The word <b>“of”</b> means multiply: <b>½ of 10 = 5</b>.<br><b>Mixed × mixed</b>: turn both into improper fractions first."},
-    {type:'example', html:"<b>3/4 of 20</b> = 3/4 × 20 = 60/4 = <b>15</b>.<br><b>1½ × 1⅓</b> = 3/2 × 4/3 = 12/6 = <b>2</b>."},
-    {type:'practice', q:{
-      text:"What is 3/4 of 20?",
-      choices:["12","15","16","23"], answer:1, explain:"3/4 × 20 = 60 ÷ 4 = 15."}},
-
-    {type:'mascot', text:"Champion effort! 🎉 Now earn your star — take the Mastery Test. Questions go from <b>medium → hard</b> and there are some <b>word problems</b>. You need <b>95%</b> to master Fractions!"},
+    {type:'text', h:'🔢 The two numbers of a fraction', html:"Every fraction has two numbers, one above the other:<br><b>Numerator</b> (the TOP number) — how many equal parts we are talking about.<br><b>Denominator</b> (the BOTTOM number) — how many equal parts the whole is divided into.<br><br>In <kbd>3/4</kbd>: the numerator is <b>3</b> and the denominator is <b>4</b>. We read it as 'three-fourths' or 'three by four'.<br><br>💡 Memory hook: <b>D</b>enominator = <b>D</b>own; it tells the total number of pieces."},
+    {type:'text', h:'🍬 Fractions of a collection', html:"A fraction can also describe part of a <b>group</b> of things, not just one object. To find <b>1/3 of 12 marbles</b>, split the 12 marbles into <b>3 equal groups</b> (4 in each group) and take <b>1 group</b> → <b>4 marbles</b>.<br>So the denominator tells you <i>how many equal groups</i> to make, and the numerator tells you <i>how many groups</i> to take."},
+    {type:'text', h:'📏 Fractions on a number line', html:"Fractions are real numbers that sit <b>between the whole numbers</b>. To show fourths between 0 and 1, divide that gap into <b>4 equal steps</b>. The marks are then 1/4, 2/4, 3/4, and 4/4 (which is 1)."},
+    {type:'worked', h:'two quick problems', html:"<b>(a) Show 3/8.</b> Step 1 — the denominator is 8, so draw a shape with <b>8 equal parts</b>. Step 2 — the numerator is 3, so <b>shade 3</b> parts. The shaded amount is 3/8. ✅<br><br><b>(b) Find 1/4 of 12 sweets.</b> Step 1 — denominator 4 → make <b>4 equal groups</b> from 12 (that's 3 in each). Step 2 — numerator 1 → take <b>1 group</b> = <b>3 sweets</b>. ✅"},
+    {type:'practice', q:{text:"A chocolate bar has 5 equal pieces and you eat 2. What fraction did you eat?", choices:["5/2","2/5","2/3","1/5"], answer:1, explain:"2 pieces out of 5 equal pieces = 2/5."}},
+    {type:'practice', q:{text:"What is 2/3 of 9 pencils?", choices:["3","6","9","2"], answer:1, explain:"Make 3 equal groups of 9 (3 each); take 2 groups = 6 pencils."}},
+    {type:'mascot', text:"Great start! 🌟 Take today's 10-question test (you need <b>95%</b> = 10/10) and earn your star. ⭐"},
   ],
   test:{ passScore:95, questions:[
-    {level:'Medium', text:"Write 17/5 as a mixed number.", choices:["3⅖","2⅖","3⅗","4⅖"], answer:0, explain:"5 goes into 17 three times (15) with 2 left over → 3⅖."},
-    {level:'Medium', text:"Simplify 18/24 to its lowest terms.", choices:["3/4","2/3","6/8","9/12"], answer:0, explain:"Divide top & bottom by 6 → 3/4 (the only fully-simplified one)."},
-    {level:'Medium', text:"Which is the SMALLEST: 2/3, 3/4, 5/6, 7/12 ?", choices:["2/3","3/4","5/6","7/12"], answer:3, explain:"As twelfths: 8/12, 9/12, 10/12, 7/12 → smallest is 7/12."},
-    {level:'Medium-Hard', text:"5/6 − 7/12 = ? (simplest form)", choices:["1/4","2/12","1/2","3/6"], answer:0, explain:"LCM 12: 10/12 − 7/12 = 3/12 = 1/4."},
-    {level:'Medium-Hard', text:"2/3 + 3/4 = ?", choices:["5/7","1 5/12","17/24","5/12"], answer:1, explain:"LCM 12: 8/12 + 9/12 = 17/12 = 1 5/12."},
-    {level:'Medium-Hard', text:"Which is the GREATEST: 5/8, 2/3, 7/12, 3/4 ?", choices:["5/8","2/3","7/12","3/4"], answer:3, explain:"As 24ths: 15/24, 16/24, 14/24, 18/24 → greatest is 3/4."},
-    {level:'Medium-Hard', text:"4/5 of 35 = ?", choices:["28","30","25","7"], answer:0, explain:"4/5 × 35 = (4 × 35) ÷ 5 = 140 ÷ 5 = 28."},
-    {level:'Hard', text:"2⅔ × 1½ = ?", choices:["3","4","4⅙","2"], answer:1, explain:"Make improper: 8/3 × 3/2 = 24/6 = 4."},
-    {level:'Hard', text:"1¾ + 2⅚ = ?", choices:["4 7/12","3 7/12","4 1/12","3 11/12"], answer:0, explain:"7/4 + 17/6; LCM 12: 21/12 + 34/12 = 55/12 = 4 7/12."},
-    {level:'Hard', text:"📖 A water tank is 3/5 full. After using 1/4 of the FULL tank, what fraction of the tank is left?", choices:["7/20","2/20","1/2","2/9"], answer:0, explain:"3/5 − 1/4 → 12/20 − 5/20 = 7/20."},
-    {level:'Hard', text:"📖 Meera spent 1/3 of her money on a book and 2/5 on a pen. What fraction of her money is LEFT?", choices:["4/15","11/15","3/8","1/15"], answer:0, explain:"Spent 1/3 + 2/5 = 5/15 + 6/15 = 11/15. Left = 1 − 11/15 = 4/15."},
-    {level:'Hard', text:"📖 A class has 40 students. If 3/8 of them are girls, how many BOYS are there?", choices:["25","15","24","16"], answer:0, explain:"Girls = 3/8 × 40 = 15. Boys = 40 − 15 = 25."},
-    {level:'Hard', text:"📖 Ravi walked 2½ km on Monday and 1¾ km on Tuesday. How far did he walk in total?", choices:["4¼ km","3¾ km","4½ km","3¼ km"], answer:0, explain:"5/2 + 7/4 = 10/4 + 7/4 = 17/4 = 4¼ km."},
-    {level:'Hard', text:"📖 One batch of cookies needs 3/4 cup of flour. How much flour is needed for 3 batches?", choices:["2¼ cups","1¾ cups","3¼ cups","2½ cups"], answer:0, explain:"3 × 3/4 = 9/4 = 2¼ cups."},
-    {level:'Hard', text:"📖 Sara had 5/6 of a cake. She gave away 1/3 of the whole cake and ate 1/4 of the whole cake. What fraction is LEFT?", choices:["1/4","1/3","1/6","1/2"], answer:0, explain:"5/6 − 1/3 − 1/4 → 10/12 − 4/12 − 3/12 = 3/12 = 1/4."},
-    {level:'Medium-Hard', text:"Which is greater: 5/6 or 7/9 ?", choices:["5/6","7/9","They are equal","Can't tell"], answer:0, explain:"LCM 18: 15/18 vs 14/18 → 5/6 is greater."},
-    {level:'Hard', text:"3⅓ − 1¾ = ?", choices:["1 7/12","2 7/12","1 5/12","2 1/12"], answer:0, explain:"10/3 − 7/4; LCM 12: 40/12 − 21/12 = 19/12 = 1 7/12."},
-    {level:'Hard', text:"2/5 × 3/4 × 5/6 = ? (simplest form)", choices:["1/4","1/2","6/15","30/120"], answer:0, explain:"Multiply across: 30/120, then simplify → 1/4."},
-    {level:'Hard', text:"📖 In a school of 600 students, 2/5 play a sport. Of those who play, 1/3 play cricket. How many play cricket?", choices:["80","200","120","40"], answer:0, explain:"Sport = 2/5 × 600 = 240. Cricket = 1/3 × 240 = 80."},
-    {level:'Hard', text:"📖 Aarav solved 5/8 of his homework before dinner and 1/4 after dinner. What fraction is still LEFT?", choices:["1/8","7/8","3/8","1/4"], answer:0, explain:"Done = 5/8 + 1/4 = 5/8 + 2/8 = 7/8. Left = 1 − 7/8 = 1/8."},
+    {level:'Medium', text:"A fraction names a ___ of a whole that has been split into equal parts.", choices:["part","colour","name","price"], answer:0, explain:"A fraction is a part of a whole."},
+    {level:'Medium', text:"For a fraction to be fair, the parts of the whole must be…", choices:["equal in size","different colours","very big","numbered"], answer:0, explain:"The parts must be equal."},
+    {level:'Medium', text:"In 3/4, the bottom number (4) is the…", choices:["denominator","numerator","whole","remainder"], answer:0, explain:"The bottom number is the denominator (total equal parts)."},
+    {level:'Medium', text:"In 3/4, the top number (3) is the…", choices:["numerator","denominator","divisor","decimal"], answer:0, explain:"The top number is the numerator."},
+    {level:'Medium', text:"'Three-fifths' written as a fraction is…", choices:["3/5","5/3","3/8","2/5"], answer:0, explain:"Three-fifths = 3/5."},
+    {level:'Medium', text:"A pizza is cut into 8 equal slices and you take 5. What fraction did you take?", choices:["5/8","8/5","3/8","5/3"], answer:0, explain:"5 of 8 equal parts = 5/8."},
+    {level:'Medium-Hard', text:"What is 1/4 of 12 marbles?", choices:["3","4","6","8"], answer:0, explain:"Split 12 into 4 equal groups (3 each); take 1 group = 3."},
+    {level:'Medium-Hard', text:"What is 2/3 of 9 sweets?", choices:["6","3","9","5"], answer:0, explain:"Make 3 groups of 9 (3 each); take 2 groups = 6."},
+    {level:'Medium-Hard', text:"On a number line from 0 to 1 split into 5 equal steps, the 2nd mark stands for…", choices:["2/5","5/2","1/5","2/10"], answer:0, explain:"The 2nd of 5 equal steps from 0 = 2/5."},
+    {level:'Hard', text:"A box has 20 chocolates. 3/4 of them are dark. How many dark chocolates are there?", choices:["15","5","12","16"], answer:0, explain:"3/4 of 20 = (20÷4)×3 = 5×3 = 15."},
+  ]},
+},
+{
+  id:'maths-d2', subject:'maths', week:1, day:2, title:'Day 2 · Proper, Improper & Mixed Fractions', emoji:'🍕',
+  blurb:'The three types of fractions and how to convert improper ↔ mixed.',
+  objective:"Tell proper, improper and mixed fractions apart, and convert an improper fraction to a mixed number and back.",
+  sections:[
+    {type:'mascot', text:"Welcome back! 🦉 Today we sort fractions into three families and learn to switch between two of them. 🔄"},
+    {type:'text', h:'📏 The three types', html:"<b>Proper fraction</b> — the top is <b>smaller</b> than the bottom (e.g. 3/8). It is <b>less than one whole</b>.<br><b>Improper fraction</b> — the top is <b>equal to or bigger</b> than the bottom (e.g. 9/4, 5/5). It is <b>one whole or more</b>.<br><b>Mixed number</b> — a <b>whole number plus a proper fraction</b> together (e.g. 2¼)."},
+    {type:'text', h:'🍕 Why improper and mixed are the SAME amount', html:"Picture 9 quarter-slices of pizza (9/4). Four quarters make one whole pizza, so 8 quarters make 2 whole pizzas, and 1 quarter is left over. That is <b>2 whole pizzas and 1/4</b> = <b>2¼</b>. So <b>9/4 = 2¼</b> — two ways of writing the same amount!"},
+    {type:'worked', h:'converting both ways', html:"<b>Improper → Mixed (7/3):</b> Divide the top by the bottom. 7 ÷ 3 = <b>2 remainder 1</b>. The quotient 2 is the whole number, the remainder 1 is the new top, the bottom stays 3 → <b>2 1/3</b>. ✅<br><br><b>Mixed → Improper (2¼):</b> Multiply the whole number by the bottom and add the top. (2 × 4) + 1 = <b>9</b>; keep the bottom 4 → <b>9/4</b>. ✅"},
+    {type:'practice', q:{text:"Which of these is an improper fraction?", choices:["3/7","2/5","9/4","1/2"], answer:2, explain:"9/4 has a top bigger than its bottom → improper."}},
+    {type:'practice', q:{text:"Write 2¼ as an improper fraction.", choices:["6/4","9/4","8/4","9/2"], answer:1, explain:"(2×4)+1 = 9 over 4 → 9/4."}},
+    {type:'mascot', text:"You can sort and convert now! 🌟 Take the 10-question test (95% to earn your star). ⭐"},
+  ],
+  test:{ passScore:95, questions:[
+    {level:'Medium', text:"In a PROPER fraction, the top is ___ the bottom.", choices:["smaller than","bigger than","equal to","double"], answer:0, explain:"Proper = top smaller than bottom (less than 1 whole)."},
+    {level:'Medium', text:"Which one is a PROPER fraction?", choices:["3/8","9/4","5/5","7/2"], answer:0, explain:"Only 3/8 has top < bottom."},
+    {level:'Medium', text:"Which one is an IMPROPER fraction?", choices:["2/5","9/4","3/7","1/2"], answer:1, explain:"9/4 has top ≥ bottom → improper."},
+    {level:'Medium', text:"5/5 is equal to…", choices:["1","0","5","½"], answer:0, explain:"Top = bottom → one whole = 1."},
+    {level:'Medium', text:"An improper fraction is always…", choices:["one whole or more","less than one whole","a whole number","negative"], answer:0, explain:"Improper fractions equal 1 or more."},
+    {level:'Medium', text:"A mixed number is made of a whole number plus a…", choices:["proper fraction","improper fraction","decimal","remainder"], answer:0, explain:"Mixed = whole number + proper fraction."},
+    {level:'Medium-Hard', text:"Write 2¼ as an improper fraction.", choices:["9/4","8/4","6/4","9/2"], answer:0, explain:"(2×4)+1 = 9 → 9/4."},
+    {level:'Medium-Hard', text:"Write 7/3 as a mixed number.", choices:["2 1/3","1 1/3","3 1/2","2 2/3"], answer:0, explain:"7 ÷ 3 = 2 r 1 → 2 1/3."},
+    {level:'Hard', text:"Write 17/5 as a mixed number.", choices:["3 2/5","2 2/5","3 3/5","4 2/5"], answer:0, explain:"17 ÷ 5 = 3 r 2 → 3 2/5."},
+    {level:'Hard', text:"Write 3¾ as an improper fraction.", choices:["15/4","13/4","12/4","7/4"], answer:0, explain:"(3×4)+3 = 15 → 15/4."},
+  ]},
+},
+{
+  id:'maths-d3', subject:'maths', week:1, day:3, title:'Day 3 · Equivalent Fractions & Simplifying', emoji:'🍕',
+  blurb:'Fractions that look different but are equal, and reducing to simplest form.',
+  objective:"Make equivalent fractions by multiplying/dividing, reduce a fraction to its simplest form, and check whether two fractions are equal.",
+  sections:[
+    {type:'mascot', text:"Did you know one amount can be written many ways? 🤔 Let's discover equivalent fractions. 🟰"},
+    {type:'text', h:'🟰 What equivalent means', html:"<b>Equivalent fractions</b> are fractions that look different but stand for <b>exactly the same amount</b>.<br><br>Think of a chocolate bar: half of it can be shown as <b>1/2</b>, or you can score it into more pieces and call it <b>2/4</b>, <b>3/6</b> or <b>4/8</b> — it is still the same amount of chocolate! So <kbd>1/2 = 2/4 = 3/6 = 4/8</kbd>."},
+    {type:'text', h:'✖️ Making equivalent fractions', html:"To make an equivalent fraction, <b>multiply (or divide) the top AND the bottom by the same number</b>. You must do the same thing to both — that keeps the value unchanged.<br>Example: 2/3 = (2×2)/(3×2) = <b>4/6</b> = (2×4)/(3×4) = <b>8/12</b>."},
+    {type:'text', h:'➗ Simplifying to lowest terms', html:"To <b>simplify</b> (or reduce) a fraction, <b>divide</b> the top and bottom by a common factor until no number (except 1) divides both. The result is the <b>simplest form</b>.<br>Example: 6/8 → divide both by 2 → <b>3/4</b>. Nothing else divides 3 and 4, so 3/4 is simplest."},
+    {type:'worked', h:'make, simplify & check', html:"<b>Make:</b> 2/3 = ?/12. The bottom went 3 → 12, that's ×4, so do ×4 on top too: 2×4 = 8 → <b>8/12</b>. ✅<br><br><b>Simplify:</b> 18/24. The biggest number dividing both is 6. 18÷6 = 3, 24÷6 = 4 → <b>3/4</b>. ✅<br><br><b>Check if equal:</b> Is 2/3 = 6/9? Cross-multiply: 2×9 = 18 and 3×6 = 18. They match → <b>yes, equal</b>. ✅"},
+    {type:'practice', q:{text:"Which fraction is equivalent to 2/3?", choices:["3/4","4/6","2/6","5/6"], answer:1, explain:"Multiply top & bottom by 2 → 4/6."}},
+    {type:'practice', q:{text:"Simplify 10/15 to lowest terms.", choices:["2/3","5/15","10/15","1/2"], answer:0, explain:"Divide both by 5 → 2/3."}},
+    {type:'mascot', text:"Equivalent and simplest forms — sorted! 🌟 Take the 10-question test (95% to earn your star). ⭐"},
+  ],
+  test:{ passScore:95, questions:[
+    {level:'Medium', text:"Equivalent fractions have the same…", choices:["value","colour","top number","bottom number"], answer:0, explain:"They name the same amount (value)."},
+    {level:'Medium', text:"To make an equivalent fraction you multiply the top and bottom by the…", choices:["same number","number 1 only","top number","denominator only"], answer:0, explain:"Multiply both by the same number."},
+    {level:'Medium', text:"1/2 = ?/8", choices:["4/8","2/8","3/8","6/8"], answer:0, explain:"×4 on both → 4/8."},
+    {level:'Medium', text:"Which is equivalent to 3/4?", choices:["6/8","4/6","2/3","5/8"], answer:0, explain:"×2 on both → 6/8."},
+    {level:'Medium', text:"Simplify 6/8 to lowest terms.", choices:["3/4","2/4","6/8","1/2"], answer:0, explain:"Divide both by 2 → 3/4."},
+    {level:'Medium', text:"4/5 = ?/20", choices:["16/20","8/20","12/20","5/20"], answer:0, explain:"×4 on both → 16/20."},
+    {level:'Medium-Hard', text:"Simplify 18/24 to lowest terms.", choices:["3/4","2/3","6/8","9/12"], answer:0, explain:"Divide both by 6 → 3/4."},
+    {level:'Medium-Hard', text:"Simplest form of 12/16 is…", choices:["3/4","6/8","2/3","4/5"], answer:0, explain:"Divide both by 4 → 3/4."},
+    {level:'Hard', text:"Is 2/3 equal to 6/9?", choices:["Yes","No","Only sometimes","Cannot say"], answer:0, explain:"Cross-multiply: 2×9 = 18 = 3×6 → equal."},
+    {level:'Hard', text:"Simplest form of 24/36 is…", choices:["2/3","3/4","4/6","12/18"], answer:0, explain:"Divide both by 12 → 2/3."},
+  ]},
+},
+{
+  id:'maths-d4', subject:'maths', week:1, day:4, title:'Day 4 · Comparing & Ordering Fractions', emoji:'🍕',
+  blurb:'Which fraction is bigger? Same/different denominators, and ordering.',
+  objective:"Compare two fractions (like denominators, like numerators, and unlike) and put a set of fractions in order.",
+  sections:[
+    {type:'mascot', text:"Which is more — 2/3 or 3/4? 🤔 By the end of today you'll answer instantly. ⚖️"},
+    {type:'text', h:'⚖️ Three easy cases', html:"<b>Same bottom (denominator):</b> the bigger top wins. 7/9 &gt; 5/9 (more ninths).<br><b>Same top (numerator):</b> the bigger bottom means <b>smaller</b> pieces, so it is the smaller fraction. 1/3 &gt; 1/4 (thirds are bigger pieces than quarters)."},
+    {type:'text', h:'🔁 Different tops AND bottoms', html:"When both numbers differ, make the comparison fair in one of two ways:<br><b>1) Common denominator:</b> rewrite both with the same bottom (use the LCM), then compare tops.<br><b>2) Cross-multiply:</b> multiply each top by the other bottom and compare the two products."},
+    {type:'worked', h:'compare and order', html:"<b>Compare 2/3 and 3/4.</b> LCM of 3 and 4 is 12. 2/3 = 8/12 and 3/4 = 9/12. Since 8 &lt; 9, <b>2/3 &lt; 3/4</b>. (Cross-multiply check: 2×4 = 8, 3×3 = 9 → same answer.) ✅<br><br><b>Order 1/2, 3/4, 2/3 from small to big.</b> Use twelfths: 1/2 = 6/12, 2/3 = 8/12, 3/4 = 9/12 → order is <b>1/2, 2/3, 3/4</b>. ✅"},
+    {type:'practice', q:{text:"Which is greater: 3/5 or 3/8?", choices:["3/5","3/8","They are equal","Can't tell"], answer:0, explain:"Same top; fifths are bigger pieces than eighths → 3/5 is greater."}},
+    {type:'practice', q:{text:"Which is greater: 2/3 or 3/4?", choices:["2/3","3/4","Equal","Can't tell"], answer:1, explain:"As twelfths: 8/12 < 9/12 → 3/4 is greater."}},
+    {type:'mascot', text:"You're a comparing champion! 🌟 Take the 10-question test (95% to earn your star). ⭐"},
+  ],
+  test:{ passScore:95, questions:[
+    {level:'Medium', text:"Which is greater: 5/9 or 7/9?", choices:["7/9","5/9","Equal","Can't tell"], answer:0, explain:"Same bottom; bigger top wins → 7/9."},
+    {level:'Medium', text:"Which is greater: 1/3 or 1/4?", choices:["1/3","1/4","Equal","Can't tell"], answer:0, explain:"Same top; thirds are bigger pieces than quarters → 1/3."},
+    {level:'Medium', text:"Which is greater: 3/5 or 3/8?", choices:["3/5","3/8","Equal","Can't tell"], answer:0, explain:"Same top; fifths > eighths → 3/5."},
+    {level:'Medium', text:"Which is SMALLER: 4/7 or 6/7?", choices:["4/7","6/7","Equal","Can't tell"], answer:0, explain:"Same bottom; smaller top → 4/7."},
+    {level:'Medium-Hard', text:"Which is greater: 2/3 or 3/4?", choices:["3/4","2/3","Equal","Can't tell"], answer:0, explain:"As twelfths: 9/12 > 8/12 → 3/4."},
+    {level:'Medium-Hard', text:"Which is the SMALLEST: 2/3, 3/4, 5/6, 7/12?", choices:["7/12","2/3","3/4","5/6"], answer:0, explain:"As twelfths: 8,9,10,7 → smallest is 7/12."},
+    {level:'Medium-Hard', text:"Which is the GREATEST: 5/8, 2/3, 7/12, 3/4?", choices:["3/4","5/8","2/3","7/12"], answer:0, explain:"As 24ths: 15,16,14,18 → greatest is 3/4."},
+    {level:'Medium-Hard', text:"Which is greater: 5/6 or 7/9?", choices:["5/6","7/9","Equal","Can't tell"], answer:0, explain:"As 18ths: 15/18 > 14/18 → 5/6."},
+    {level:'Hard', text:"Put in order (small → big): 1/2, 3/4, 2/3.", choices:["1/2, 2/3, 3/4","3/4, 2/3, 1/2","2/3, 1/2, 3/4","1/2, 3/4, 2/3"], answer:0, explain:"Twelfths: 6/12, 8/12, 9/12 → 1/2, 2/3, 3/4."},
+    {level:'Hard', text:"Cross-multiply to compare 3/7 and 4/9. Which is greater?", choices:["4/9","3/7","Equal","Can't tell"], answer:0, explain:"3×9 = 27, 7×4 = 28. 28 > 27 → 4/9 is greater."},
+  ]},
+},
+{
+  id:'maths-d5', subject:'maths', week:1, day:5, title:'Day 5 · Adding, Subtracting & Multiplying', emoji:'🍕',
+  blurb:'Operations on like, unlike and mixed fractions, plus word problems.',
+  objective:"Add and subtract fractions (like, unlike and mixed) and multiply fractions, and solve word problems with them.",
+  sections:[
+    {type:'mascot', text:"Final fractions day! ➕➖✖️ Let's put fractions to work, including real-life word problems. 💪"},
+    {type:'text', h:'➕➖ Adding & subtracting', html:"<b>Same bottom:</b> add or subtract the tops and keep the bottom → 2/7 + 3/7 = 5/7.<br><b>Different bottoms:</b> first rewrite them with the <b>same bottom</b> (the LCM), then add/subtract the tops.<br><b>Mixed numbers:</b> add the whole parts and the fraction parts separately, or turn both into improper fractions first."},
+    {type:'text', h:'✖️ Multiplying', html:"<b>Fraction × fraction:</b> multiply the tops together and the bottoms together, then simplify → 2/3 × 3/5 = 6/15 = 2/5.<br>The word <b>'of'</b> means multiply: '3/4 of 20' means 3/4 × 20.<br><b>Mixed × mixed:</b> change both to improper fractions first, then multiply."},
+    {type:'worked', h:'one of each', html:"<b>Unlike add:</b> 1/2 + 1/3. LCM of 2,3 is 6 → 3/6 + 2/6 = <b>5/6</b>. ✅<br><b>Unlike subtract:</b> 3/4 − 1/6. LCM of 4,6 is 12 → 9/12 − 2/12 = <b>7/12</b>. ✅<br><b>Multiply:</b> 2/3 × 3/5 = 6/15 = <b>2/5</b>. ✅<br><b>'Of':</b> 3/4 of 20 = 3/4 × 20 = 60/4 = <b>15</b>. ✅"},
+    {type:'practice', q:{text:"What is 1/2 + 1/3?", choices:["2/5","5/6","2/6","1/6"], answer:1, explain:"LCM 6 → 3/6 + 2/6 = 5/6."}},
+    {type:'practice', q:{text:"What is 3/4 of 20?", choices:["12","15","16","23"], answer:1, explain:"3/4 × 20 = 60 ÷ 4 = 15."}},
+    {type:'mascot', text:"You've mastered fraction operations! 🌟 This is the final Maths test — 95% to earn your star and finish Week 1 Maths. ⭐"},
+  ],
+  test:{ passScore:95, questions:[
+    {level:'Medium', text:"2/7 + 3/7 = ?", choices:["5/7","5/14","6/7","1/7"], answer:0, explain:"Same bottom: add tops → 5/7."},
+    {level:'Medium', text:"4/5 − 1/5 = ?", choices:["3/5","5/5","3/10","4/5"], answer:0, explain:"Same bottom: subtract tops → 3/5."},
+    {level:'Medium', text:"1/2 + 1/3 = ?", choices:["5/6","2/5","2/6","1/6"], answer:0, explain:"LCM 6: 3/6 + 2/6 = 5/6."},
+    {level:'Medium', text:"3/4 of 20 = ?", choices:["15","12","16","18"], answer:0, explain:"3/4 × 20 = 15."},
+    {level:'Medium-Hard', text:"3/4 − 1/6 = ?", choices:["7/12","2/2","1/2","5/12"], answer:0, explain:"LCM 12: 9/12 − 2/12 = 7/12."},
+    {level:'Medium-Hard', text:"2/3 × 3/5 = ? (simplest form)", choices:["2/5","5/8","6/8","1/5"], answer:0, explain:"6/15 simplifies to 2/5."},
+    {level:'Medium-Hard', text:"1½ + 2¾ = ?", choices:["4¼","3¾","4½","3¼"], answer:0, explain:"Wholes 3; ½+¾ = 5/4 = 1¼ → 4¼."},
+    {level:'Hard', text:"📖 Riya ate 1/4 of a pizza and her brother ate 3/8. How much did they eat in all?", choices:["5/8","1/2","4/12","4/8"], answer:0, explain:"1/4 = 2/8; 2/8 + 3/8 = 5/8."},
+    {level:'Hard', text:"📖 A jug has 1½ L of juice. If 3/4 L is poured out, how much is left?", choices:["¾ L","½ L","1¼ L","2¼ L"], answer:0, explain:"6/4 − 3/4 = 3/4 L."},
+    {level:'Hard', text:"📖 Aarav solved 5/8 of his homework before dinner and 1/4 after dinner. What fraction is still LEFT?", choices:["1/8","7/8","3/8","1/4"], answer:0, explain:"Done 5/8 + 2/8 = 7/8; left = 1/8."},
   ]},
 },
 
@@ -595,6 +665,7 @@ function renderLesson(id){
     if(sec.type==='text') h+=`<div class="sec"><h4>${sec.h||''}</h4><p>${sec.html}</p></div>`;
     else if(sec.type==='example') h+=`<div class="sec"><div class="example">📝 ${sec.html}</div></div>`;
     else if(sec.type==='tip') h+=`<div class="sec"><div class="tip">💡 ${sec.html}</div></div>`;
+    else if(sec.type==='worked') h+=`<div class="sec"><div class="worked"><div class="worked-h">🧮 Worked Example${sec.h?': '+sec.h:''}</div>${sec.html}</div></div>`;
     else if(sec.type==='mascot') h+=`<div class="sec"><div class="mascot"><div class="face">🦉</div><div>${sec.text}</div></div></div>`;
     else if(sec.type==='frac') h+=`<div class="sec" id="fracMount"></div>`;
     else if(sec.type==='practice') h+=`<div class="sec" data-practice="${i}"></div>`;
