@@ -185,9 +185,9 @@ const CURRICULUM = { lessons: [
       text:"What is 3/4 of 20?",
       choices:["12","15","16","23"], answer:1, explain:"3/4 × 20 = 60 ÷ 4 = 15."}},
 
-    {type:'mascot', text:"Champion effort! 🎉 Now earn your star — take the Mastery Test. Questions go from <b>medium → hard</b> and there are some <b>word problems</b>. You need <b>80%</b> to master Fractions!"},
+    {type:'mascot', text:"Champion effort! 🎉 Now earn your star — take the Mastery Test. Questions go from <b>medium → hard</b> and there are some <b>word problems</b>. You need <b>95%</b> to master Fractions!"},
   ],
-  test:{ passScore:80, questions:[
+  test:{ passScore:95, questions:[
     {level:'Medium', text:"In the fraction 3/7, which number is the numerator?", choices:["7","3","10","21"], answer:1, explain:"The numerator is the TOP number → 3."},
     {level:'Medium', text:"Which one is a PROPER fraction?", choices:["7/4","9/9","3/8","11/2"], answer:2, explain:"Proper = top smaller than bottom → 3/8."},
     {level:'Medium', text:"The mixed number 2¼ written as an improper fraction is…", choices:["9/2","8/4","9/4","6/4"], answer:2, explain:"(2×4)+1 = 9, over 4 → 9/4."},
@@ -219,7 +219,7 @@ const KEY='learnquest_v1';
 function loadStore(){ try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}} }
 function saveStore(s){ localStorage.setItem(KEY, JSON.stringify(s)); }
 let store = loadStore();
-if(!store.name) store.name = '';
+if(!store.name) store.name = 'Aarav';
 if(!store.progress) store.progress = {};
 function prog(id){ return store.progress[id] || {opened:false,bestScore:null,attempts:0,mastered:false,lastDate:null}; }
 function setProg(id,patch){ store.progress[id] = Object.assign(prog(id),patch); saveStore(store); }
