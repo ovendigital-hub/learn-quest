@@ -212,57 +212,145 @@ const CURRICULUM = { lessons: [
 },
 
 /* ---------- COMING-SOON SLOTS (Week 1) — give me topics to fill these ---------- */
+/* ===== ENGLISH · Poorvi Unit 1 — 5 day-sessions ===== */
 {
-  id:'english-fables', subject:'english', week:1, title:'Unit 1: Fables & Folk Tales + Grammar', emoji:'📖',
-  blurb:'Poorvi Unit 1 stories & morals, plus sentence types, phrases/clauses, subject & predicate.',
-  objective:"Understand what fables and folk tales are (Poorvi Unit 1), find the moral of a story, and master four grammar skills: subject & predicate, phrases vs clauses, the four sentence types (statement/question/request/instruction), and converting one type into another.",
+  id:'english-d1', subject:'english', week:1, day:1, title:'Day 1 · Fables, Folk Tales & "A Bottle of Dew"', emoji:'📖',
+  blurb:'What fables & folk tales are, finding the moral, and the story "A Bottle of Dew".',
+  objective:"Understand what fables and folk tales are, learn how to find a story's moral, and read and understand 'A Bottle of Dew' from Poorvi Unit 1.",
   sections:[
-    {type:'mascot', text:"Hello reader! 🦉 Hooty here. Unit 1 is all about <b>fables and folk tales</b> — wise old stories with a lesson hidden inside. We'll meet a clever fox and a hard-working farmer, then sharpen our <b>grammar</b> skills. 📖✨"},
-    {type:'text', h:'📖 1. What are fables and folk tales?', html:"A <b>fable</b> is a short story — often with <b>talking animals</b> — that teaches a <b>moral</b> (a lesson about life).<br>A <b>folk tale</b> is a traditional story <b>passed down by word of mouth</b> through generations. Both carry wisdom from long ago."},
+    {type:'mascot', text:"Hello reader! 🦉 I'm Hooty. Unit 1 is full of wise old stories. Before we read them, let's understand <b>what kind of stories</b> they are — and the secret 'lesson' hidden inside every one. 📖✨"},
+    {type:'text', h:'📖 What exactly is a fable?', html:"A <b>fable</b> is a <b>very short story</b> whose characters are usually <b>animals (or even objects) that talk and behave like people</b>. Because the story is short and simple, the <b>lesson</b> it teaches stands out very clearly. That lesson is called the <b>moral</b>.<br><br>Fables are extremely old. Many famous ones come from <b>Aesop</b> (an ancient Greek storyteller) and from India's own <b>Panchatantra</b> — collections written down thousands of years ago to teach wisdom to children."},
+    {type:'text', h:'🗣️ And what is a folk tale?', html:"A <b>folk tale</b> is a <b>traditional story</b> that ordinary people told <b>aloud</b>, passing it from grandparents to parents to children, long <i>before</i> it was ever written in a book. Folk tales belong to the <b>culture</b> of a place. They often celebrate <b>cleverness, kindness and hard work</b>, and they carry the values of the people who told them."},
+    {type:'example', html:"Both fables and folk tales teach us something. The difference is mainly <i>how</i> they travel: a <b>fable</b> is a short tale built around one clear moral (often with animals), while a <b>folk tale</b> is a community's story handed down <b>by word of mouth</b> over many years."},
+    {type:'text', h:'🎯 How to find the MORAL of a story', html:"The <b>moral</b> is the wise message you carry home. To find it, ask yourself two questions:<br>1) <b>What lesson did the main character learn?</b><br>2) <b>What is the story trying to teach me about life?</b><br>The answer, said in one sentence, is the moral."},
+    {type:'practice', q:{text:"The wise lesson hidden inside a fable is called its…", choices:["Moral","Title","Author","Cover"], answer:0, explain:"The life-lesson of a fable or folk tale is its moral."}},
 
-    {type:'text', h:'📚 2. The three tales in Unit 1', html:"<b>A Bottle of Dew</b> — Rama Natha hopes for magic, but learns that <b>hard work</b> is more valuable than any magic.<br><b>The Raven and the Fox</b> — a sly fox flatters a proud raven into singing, and the raven drops its food. Moral: <b>don't be fooled by flattery</b>.<br><b>Rama to the Rescue</b> — Rama and his wife use <b>clever thinking and courage</b> to outsmart a thief."},
-    {type:'example', html:"The <b>moral</b> is the heart of a fable — the lesson you carry home. 'Don't let praise make you careless' is the moral of <i>The Raven and the Fox</i>."},
-    {type:'practice', q:{text:"The lesson or message that a fable teaches is called its…", choices:["Moral","Title","Author","Setting"], answer:0, explain:"The life-lesson of a fable is its moral."}},
-    {type:'practice', q:{text:"In 'A Bottle of Dew', Rama Natha finally learns that ___ is more valuable than magic.", choices:["hard work","money","luck","sleep"], answer:0, explain:"The story's moral: hard work is worth more than magic."}},
-
-    {type:'mascot', text:"Now let's power up our grammar! 💪 Every sentence is built from two parts…"},
-    {type:'text', h:'🧱 3. Subject & Predicate', html:"Every sentence has two parts:<br><b>Subject</b> — who or what the sentence is about.<br><b>Predicate</b> — what is said about the subject (it contains the <b>verb</b>).<br><br>Example: <b>The clever fox</b> | <b>tricked the raven.</b><br>(subject) | (predicate)"},
-    {type:'practice', q:{text:"In 'The greedy thief ran away.', what is the SUBJECT?", choices:["The greedy thief","ran away","ran","away"], answer:0, explain:"The subject is who the sentence is about → The greedy thief."}},
-
-    {type:'text', h:'🔗 4. Phrases & Clauses', html:"A <b>phrase</b> is a group of words that work together but has <b>no subject + verb</b> pair (e.g. <i>in the dark forest</i>, <i>a bottle of dew</i>).<br>A <b>clause</b> is a group of words that <b>has a subject AND a verb</b> (e.g. <i>the raven sang</i>)."},
-    {type:'tip', html:"Quick test: can you spot a <b>subject + a verb</b>? If <b>yes</b> → it's a <b>clause</b>. If <b>no</b> → it's a <b>phrase</b>."},
-    {type:'practice', q:{text:"Is 'under the tall tree' a phrase or a clause?", choices:["Phrase","Clause","Sentence","Paragraph"], answer:0, explain:"No subject + verb pair → it is a phrase."}},
-
-    {type:'text', h:'❓ 5. Types of sentences (by purpose)', html:"<b>Statement</b> — gives information; ends with a full stop. <i>The fox was clever.</i><br><b>Question</b> — asks something; ends with ?. <i>Was the fox clever?</i><br><b>Request</b> — asks politely, often with 'please'. <i>Please pass the cheese.</i><br><b>Instruction / Command</b> — tells someone to do something. <i>Mix the dew in the pot.</i>"},
-    {type:'practice', q:{text:"'Please give me the cheese.' This sentence is a…", choices:["Request","Statement","Question","Exclamation"], answer:0, explain:"It politely asks for something (with 'please') → a request."}},
-
-    {type:'text', h:'🔄 6. Changing one type into another', html:"The same idea can be said in different ways:<br><b>Statement → Question:</b> 'She is singing.' → 'Is she singing?'<br><b>Statement → Request:</b> 'You should close the door.' → 'Please close the door.'<br><b>Order → Polite request:</b> 'Give me the book.' → 'Could you please give me the book?'"},
-    {type:'example', html:"To make a question, move the helping/verb word to the front: 'The raven <b>dropped</b> the cheese.' → '<b>Did</b> the raven drop the cheese?'"},
-    {type:'practice', q:{text:"Change to a QUESTION: 'The fox is clever.'", choices:["Is the fox clever?","The fox is clever!","Clever fox.","The fox was not clever."], answer:0, explain:"Move 'is' to the front and add a question mark → Is the fox clever?"}},
-
-    {type:'mascot', text:"Wonderful! 🌟 You've explored fables and powered up four grammar skills. Ready for your star? Take the Mastery Test — <b>medium → hard</b>, you need <b>95%</b> to master it!"},
+    {type:'text', h:'🍌 The story: "A Bottle of Dew"', html:"A young man named <b>Rama Natha</b> is clever but <b>lazy</b> — he dreams of becoming rich <b>without working</b>. He becomes sure that a single <b>magic 'bottle of dew'</b> will solve everything. His <b>wise father</b> worries about his son's habits, so he gently <b>guides him through a trick</b>: he convinces Rama Natha that the magic will only work if he <b>grows a special crop and waters it daily</b>. To do this, Rama Natha has to <b>work hard in the fields every single day</b>."},
+    {type:'text', h:'🌅 What happens — and the lesson', html:"Day after day of honest <b>hard work</b> slowly makes the farm <b>prosper</b> (grow rich). In the end Rama Natha realises the truth: there was never any real magic — the <b>hard work itself</b> was the magic that made him successful.<br><br>👉 <b>Moral:</b> <i>Hard work is more valuable than magic. There is no shortcut to success.</i>"},
+    {type:'text', h:'📝 New words to know', html:"<b>dew</b> — tiny drops of water that settle on plants in the early morning.<br><b>lazy</b> — not wanting to work or make an effort.<br><b>prosper</b> — to become successful or wealthy.<br><b>patience</b> — calmly waiting and continuing without giving up."},
+    {type:'practice', q:{text:"At first, what does Rama Natha believe will make him rich?", choices:["A magic bottle of dew","Hard work in the fields","His father's money","A lucky coin"], answer:0, explain:"He lazily hopes a magic bottle of dew will make him rich without effort."}},
+    {type:'mascot', text:"You've met your first folk tale! 🌟 Take today's 10-question test (you need <b>95%</b> — that's 10/10) and earn your star. ⭐"},
   ],
   test:{ passScore:95, questions:[
-    {level:'Medium', text:"What is a fable?", choices:["A short story (often with talking animals) that teaches a moral","A long history book","A daily newspaper report","A list of words"], answer:0, explain:"A fable is a short story, often with animals, that teaches a moral."},
-    {level:'Medium', text:"A traditional story passed down by word of mouth through generations is a…", choices:["Folk tale","Textbook","Diary","Letter"], answer:0, explain:"Stories handed down orally are folk tales."},
-    {level:'Medium', text:"The lesson or message that a fable teaches is called its…", choices:["Moral","Title","Author","Setting"], answer:0, explain:"The life-lesson is the moral."},
-    {level:'Medium', text:"In 'The Raven and the Fox', the clever fox fools the proud raven by using…", choices:["Flattery (false praise)","Force","Magic","Money"], answer:0, explain:"The fox flatters the raven into singing, so it drops its food."},
-    {level:'Medium', text:"A sentence that gives information and ends with a full stop is a…", choices:["Statement","Question","Request","Exclamation"], answer:0, explain:"Information + full stop = a statement."},
-    {level:'Medium', text:"A sentence that asks something and ends with a question mark is a…", choices:["Question","Statement","Instruction","Request"], answer:0, explain:"Asks + '?' = a question."},
-    {level:'Medium', text:"A sentence that politely asks for something, often with 'please', is a…", choices:["Request","Statement","Question","Command"], answer:0, explain:"Polite asking (please) = a request."},
-    {level:'Medium-Hard', text:"'Mix the dew and bring the pot to me.' This sentence is an…", choices:["Instruction (command)","Question","Statement","Request"], answer:0, explain:"It tells someone to do something → an instruction/command."},
-    {level:'Medium-Hard', text:"In 'The clever fox tricked the raven', the SUBJECT is…", choices:["The clever fox","tricked the raven","tricked","the raven"], answer:0, explain:"The sentence is about 'The clever fox' → that is the subject."},
-    {level:'Medium-Hard', text:"The part of a sentence that tells what the subject does or is (and contains the verb) is the…", choices:["Predicate","Subject","Phrase","Title"], answer:0, explain:"That part is the predicate."},
-    {level:'Medium-Hard', text:"Is 'in the dark forest' a phrase or a clause?", choices:["Phrase","Clause","Sentence","Paragraph"], answer:0, explain:"No subject + verb → it is a phrase."},
-    {level:'Medium-Hard', text:"'the raven sang loudly' has a subject and a verb, so it is a…", choices:["Clause","Phrase","Single word","Title"], answer:0, explain:"Subject ('the raven') + verb ('sang') = a clause."},
-    {level:'Medium-Hard', text:"In 'A Bottle of Dew', Rama Natha learns that ___ is more valuable than magic.", choices:["hard work","gold","sleep","flattery"], answer:0, explain:"The moral: hard work beats magic."},
-    {level:'Medium-Hard', text:"'Rama to the Rescue' teaches that ___ can save you from danger.", choices:["cleverness and courage","greed","pride","laziness"], answer:0, explain:"Rama and his wife use clever thinking and courage."},
-    {level:'Hard', text:"Change to a QUESTION: 'The raven dropped the cheese.'", choices:["Did the raven drop the cheese?","The raven dropped the cheese!","Drop the cheese, raven.","The raven did not drop the cheese."], answer:0, explain:"Use 'Did' at the front + '?' → Did the raven drop the cheese?"},
-    {level:'Hard', text:"Turn this order into a polite REQUEST: 'Give me the book.'", choices:["Could you please give me the book?","Give me the book now!","You gave me the book.","Did you give the book?"], answer:0, explain:"A polite request uses 'Could you please…'."},
-    {level:'Hard', text:"Which sentence is an INSTRUCTION?", choices:["First, water the plants every day.","Is the plant growing?","The plant is green.","What a tall plant!"], answer:0, explain:"It tells you what to do (a command/instruction)."},
-    {level:'Hard', text:"Which group of words is a CLAUSE (not a phrase)?", choices:["She told a story","under the big tree","a bottle of dew","in the morning"], answer:0, explain:"'She told a story' has a subject + verb → a clause."},
-    {level:'Hard', text:"Identify the PREDICATE in: 'The greedy thief ran away quietly.'", choices:["ran away quietly","The greedy thief","The greedy","thief"], answer:0, explain:"The predicate (with the verb) is 'ran away quietly'."},
-    {level:'Hard', text:"Change the statement into a request using 'please': 'You should open the window.'", choices:["Please open the window.","Did you open the window?","The window is open.","Open?"], answer:0, explain:"A request: 'Please open the window.'"},
+    {level:'Medium', text:"What is a fable?", choices:["A short story (often with talking animals) that teaches a moral","A long history book","A daily news report","A page of spellings"], answer:0, explain:"A fable is a short story, often with animals, that teaches a moral."},
+    {level:'Medium', text:"A traditional story passed down by word of mouth through generations is a…", choices:["Folk tale","Textbook","Diary","Letter"], answer:0, explain:"Orally handed-down stories are folk tales."},
+    {level:'Medium', text:"The wise lesson a story teaches is called its…", choices:["Moral","Title","Author","Setting"], answer:0, explain:"The life-lesson is the moral."},
+    {level:'Medium', text:"Two famous old sources of fables are Aesop and India's…", choices:["Panchatantra","Dictionary","Atlas","Newspaper"], answer:0, explain:"The Panchatantra is an ancient Indian collection of teaching-stories."},
+    {level:'Medium', text:"In 'A Bottle of Dew', Rama Natha is clever but…", choices:["lazy","kind","tall","rich"], answer:0, explain:"He is clever but lazy, hoping to get rich without work."},
+    {level:'Medium', text:"Who guides Rama Natha towards hard work?", choices:["His wise father","A magician","A talking fox","The king"], answer:0, explain:"His wise father uses a clever trick to make him work."},
+    {level:'Medium-Hard', text:"What does Rama Natha finally learn is the real 'magic'?", choices:["Hard work","Luck","A magic bottle","Sleep"], answer:0, explain:"The hard work itself was the magic that made him prosper."},
+    {level:'Medium-Hard', text:"The word 'dew' means…", choices:["tiny morning water drops on plants","a kind of fruit","a magic spell","a type of cloth"], answer:0, explain:"Dew = tiny drops of water that form on plants in the early morning."},
+    {level:'Medium-Hard', text:"The word 'prosper' means to…", choices:["become successful or wealthy","fall asleep","run away","feel afraid"], answer:0, explain:"To prosper is to grow successful or rich."},
+    {level:'Hard', text:"Which proverb BEST matches the moral of 'A Bottle of Dew'?", choices:["There is no shortcut to success.","Look before you leap.","Birds of a feather flock together.","Better late than never."], answer:0, explain:"The story teaches that hard work, not shortcuts or magic, brings success."},
+  ]},
+},
+{
+  id:'english-d2', subject:'english', week:1, day:2, title:'Day 2 · "The Raven and the Fox" & "Rama to the Rescue"', emoji:'📖',
+  blurb:'Two more tales from Unit 1, their characters, morals and new words.',
+  objective:"Read and understand 'The Raven and the Fox' and 'Rama to the Rescue', describe the characters, and state each story's moral.",
+  sections:[
+    {type:'mascot', text:"Welcome back! 🦉 Today we meet a <b>cunning fox</b>, a <b>proud raven</b>, and a brave couple who outsmart a thief. Watch how cleverness wins the day! 🦊🐦"},
+    {type:'text', h:'🧀 The story: "The Raven and the Fox"', html:"A <b>raven</b> finds a tasty piece of <b>cheese</b> and flies up to a branch to enjoy it. A hungry <b>fox</b> spots the cheese and wants it — but it is too high to reach. So the clever fox uses a trick called <b>flattery</b> (false praise). He loudly admires the raven's beauty and begs to hear its 'wonderful, sweet voice'."},
+    {type:'text', h:'🪶 The proud mistake — and the lesson', html:"The <b>proud</b> raven is so pleased by the praise that it opens its beak to <b>caw</b> — and the cheese drops straight into the fox's waiting mouth! The vain raven loses its meal.<br><br>👉 <b>Moral:</b> <i>Do not be fooled by flattery; pride can make you careless.</i><br><br><b>Characters:</b> the <b>fox</b> is <i>cunning/clever</i>; the <b>raven</b> is <i>proud and foolish</i>."},
+    {type:'practice', q:{text:"How does the fox get the cheese from the raven?", choices:["By flattering it until it opens its beak","By climbing the tree","By scaring it away","By buying it"], answer:0, explain:"The fox uses flattery (false praise) so the proud raven sings and drops the cheese."}},
+
+    {type:'text', h:'🛡️ The story: "Rama to the Rescue"', html:"One night a <b>thief</b> sneaks into the home of <b>Rama and his wife</b>. Instead of panicking, the quick-thinking couple keep their <b>presence of mind</b>. Using <b>clever thinking and courage</b>, they cleverly outwit the thief and protect their home and belongings."},
+    {type:'text', h:'💡 The lesson', html:"👉 <b>Moral:</b> <i>Cleverness, courage and presence of mind can save us from danger.</i> You do not always need strength — a calm, clever mind can be your best protection."},
+    {type:'text', h:'📝 New words to know', html:"<b>flattery</b> — false or excessive praise used to fool someone.<br><b>vain / proud</b> — having too high an opinion of oneself.<br><b>cunning</b> — clever in a sly, tricky way.<br><b>courage</b> — bravery; facing danger without giving in to fear.<br><b>presence of mind</b> — staying calm and thinking quickly in a difficult moment."},
+    {type:'practice', q:{text:"In 'Rama to the Rescue', how do Rama and his wife defeat the danger?", choices:["With clever thinking and courage","By running far away","By giving the thief money","By shouting only"], answer:0, explain:"They use cleverness, courage and presence of mind to outwit the thief."}},
+    {type:'mascot', text:"Two more tales mastered! 🌟 Now show what you remember — take the 10-question test (95% to earn your star). ⭐"},
+  ],
+  test:{ passScore:95, questions:[
+    {level:'Medium', text:"In 'The Raven and the Fox', what food does the raven have?", choices:["Cheese","A fish","Bread","A banana"], answer:0, explain:"The raven holds a piece of cheese."},
+    {level:'Medium', text:"The fox cannot reach the cheese, so he uses…", choices:["flattery (false praise)","a ladder","his friends","magic"], answer:0, explain:"He flatters the raven into opening its beak."},
+    {level:'Medium', text:"The raven loses the cheese mainly because it is…", choices:["proud and careless","sleepy","ill","kind"], answer:0, explain:"Its pride and vanity make it careless."},
+    {level:'Medium', text:"'Flattery' means…", choices:["false praise used to fool someone","a loud noise","a kind of bird","telling the truth"], answer:0, explain:"Flattery = false or excessive praise to trick someone."},
+    {level:'Medium', text:"The moral of 'The Raven and the Fox' is:", choices:["Do not be fooled by flattery","Always sing loudly","Sharing is caring","Look before you leap"], answer:0, explain:"Beware of flatterers; pride makes us careless."},
+    {level:'Medium-Hard', text:"In 'Rama to the Rescue', who enters the house at night?", choices:["A thief","A king","A fox","A guest"], answer:0, explain:"A thief sneaks into Rama's home."},
+    {level:'Medium-Hard', text:"How do Rama and his wife overcome the thief?", choices:["Clever thinking and courage","Great strength","Loud crying","Pure luck"], answer:0, explain:"They use cleverness, courage and presence of mind."},
+    {level:'Medium-Hard', text:"'Cunning' means…", choices:["clever in a sly, tricky way","very honest","extremely lazy","very tall"], answer:0, explain:"Cunning = clever in a tricky way (like the fox)."},
+    {level:'Hard', text:"Staying calm and thinking quickly in a tough moment is called…", choices:["presence of mind","flattery","laziness","vanity"], answer:0, explain:"Presence of mind = calm, quick thinking under pressure."},
+    {level:'Hard', text:"Which pair of character traits is CORRECT?", choices:["Fox – cunning; Raven – proud","Fox – honest; Raven – brave","Fox – shy; Raven – clever","Fox – lazy; Raven – kind"], answer:0, explain:"The fox is cunning; the raven is proud (and foolish)."},
+  ]},
+},
+{
+  id:'english-d3', subject:'english', week:1, day:3, title:'Day 3 · Subject & Predicate', emoji:'📖',
+  blurb:'The two parts of every sentence, and how to find each one.',
+  objective:"Identify the subject (naming part) and predicate (telling part) of a sentence, and use the verb to locate the predicate.",
+  sections:[
+    {type:'mascot', text:"Grammar time! 💪 Every sentence is like a little team of TWO players. Let's meet them. 🧩"},
+    {type:'text', h:'🧱 The two parts of a sentence', html:"Every complete sentence has two parts:<br><br><b>1) The Subject</b> — the <b>naming part</b>. It tells us <b>who or what</b> the sentence is about.<br><b>2) The Predicate</b> — the <b>telling part</b>. It tells us <b>what the subject does or is</b>. The predicate <b>always contains the verb</b> (the action or 'being' word)."},
+    {type:'example', html:"<b>The clever fox</b> | <b>tricked the proud raven.</b><br>↳ Subject = <b>The clever fox</b> (who the sentence is about)<br>↳ Predicate = <b>tricked the proud raven</b> (what the fox did — note the verb <i>tricked</i>)."},
+    {type:'text', h:'🔎 How to find the subject', html:"Ask: <b>'Who or what is this sentence about?'</b> The answer — <i>together with its describing words</i> — is the <b>subject</b>. Everything that is left is the <b>predicate</b>.<br><br>The subject can be one word (<i>Birds</i> fly.) or many words (<i>The sacred rivers of India</i> are beautiful.)."},
+    {type:'text', h:'🧠 A reliable trick', html:"Find the <b>verb</b> first (the action/being word). The verb is <b>always inside the predicate</b>. The part before the action that names the 'doer' is usually the subject."},
+    {type:'practice', q:{text:"In 'The hungry fox waited under the tree.', the SUBJECT is…", choices:["The hungry fox","waited under the tree","under the tree","waited"], answer:0, explain:"The sentence is about 'The hungry fox' → that is the subject."}},
+    {type:'practice', q:{text:"In the same sentence, the PREDICATE is…", choices:["waited under the tree","The hungry fox","The hungry","fox"], answer:0, explain:"The telling part (with the verb 'waited') is 'waited under the tree'."}},
+    {type:'mascot', text:"You can now split any sentence in two! 🌟 Prove it in today's 10-question test (95% to earn your star). ⭐"},
+  ],
+  test:{ passScore:95, questions:[
+    {level:'Medium', text:"The naming part of a sentence (who/what it is about) is the…", choices:["Subject","Predicate","Verb","Title"], answer:0, explain:"The naming part is the subject."},
+    {level:'Medium', text:"The telling part of a sentence (what the subject does/is) is the…", choices:["Predicate","Subject","Noun","Heading"], answer:0, explain:"The telling part is the predicate."},
+    {level:'Medium', text:"The predicate always contains a…", choices:["verb","question mark","capital letter only","number"], answer:0, explain:"The verb is always inside the predicate."},
+    {level:'Medium', text:"In 'Birds fly.', the predicate is…", choices:["fly","Birds","Bird","s"], answer:0, explain:"'fly' is the telling part (the verb) → predicate."},
+    {level:'Medium', text:"In 'My little sister sang a song.', the SUBJECT is…", choices:["My little sister","sang a song","a song","sang"], answer:0, explain:"The sentence is about 'My little sister'."},
+    {level:'Medium-Hard', text:"In 'The clever fox tricked the raven.', the PREDICATE is…", choices:["tricked the raven","The clever fox","The clever","fox"], answer:0, explain:"The telling part with the verb 'tricked' is 'tricked the raven'."},
+    {level:'Medium-Hard', text:"In 'The sacred rivers of India are very beautiful.', the SUBJECT is…", choices:["The sacred rivers of India","are very beautiful","very beautiful","India"], answer:0, explain:"The whole naming group is the subject."},
+    {level:'Medium-Hard', text:"To find the subject, you should ask…", choices:["Who or what is the sentence about?","Where is the full stop?","How long is the sentence?","What colour is it?"], answer:0, explain:"Ask 'who/what is it about?' to find the subject."},
+    {level:'Hard', text:"In which sentence is 'The brave soldier' the SUBJECT?", choices:["The brave soldier guarded the gate.","We saw the brave soldier.","They thanked the brave soldier.","Near the brave soldier stood a flag."], answer:0, explain:"Only here is 'The brave soldier' the doer/naming part at the start."},
+    {level:'Hard', text:"Identify the PREDICATE: 'The greedy thief ran away quietly.'", choices:["ran away quietly","The greedy thief","The greedy","thief"], answer:0, explain:"The telling part (verb 'ran') is 'ran away quietly'."},
+  ]},
+},
+{
+  id:'english-d4', subject:'english', week:1, day:4, title:'Day 4 · Phrases & Clauses', emoji:'📖',
+  blurb:'Telling apart a phrase (no subject+verb) from a clause (has subject+verb).',
+  objective:"Recognise the difference between a phrase and a clause using the 'subject + verb' test.",
+  sections:[
+    {type:'mascot', text:"Words love to travel in groups! 🚶‍♂️🚶‍♀️ Today we learn the two main kinds of word-groups: phrases and clauses. 🔗"},
+    {type:'text', h:'🔗 What is a phrase?', html:"A <b>phrase</b> is a <b>group of words that work together</b> as one unit but does <b>NOT contain a subject-and-verb pair</b>. By itself, a phrase does <b>not</b> give a complete thought.<br><br>Examples: <i>in the early morning</i> · <i>a bottle of dew</i> · <i>under the tall tree</i>. Notice — none of these has someone <i>doing</i> an action."},
+    {type:'text', h:'🧩 What is a clause?', html:"A <b>clause</b> is a <b>group of words that DOES contain a subject and a verb</b>. It tells us about an action or a state.<br><br>Examples: <i>the raven sang</i> (subject <b>the raven</b> + verb <b>sang</b>) · <i>Rama worked hard</i> · <i>because she was tired</i>."},
+    {type:'tip', html:"<b>The one test you need:</b> look for a <b>subject + a verb</b>. If you can find <b>both</b> → it's a <b>clause</b>. If you cannot → it's a <b>phrase</b>."},
+    {type:'example', html:"<i>near the river</i> → no verb → <b>phrase</b>.<br><i>she sat near the river</i> → subject <b>she</b> + verb <b>sat</b> → <b>clause</b>."},
+    {type:'practice', q:{text:"Is 'after the heavy rain' a phrase or a clause?", choices:["Phrase","Clause","Sentence","Paragraph"], answer:0, explain:"No subject + verb pair → it is a phrase."}},
+    {type:'practice', q:{text:"Is 'the children were playing' a phrase or a clause?", choices:["Clause","Phrase","Title","Word"], answer:0, explain:"Subject 'the children' + verb 'were playing' → a clause."}},
+    {type:'mascot', text:"Phrase or clause? You can tell now! 🌟 Take the 10-question test (95% to earn your star). ⭐"},
+  ],
+  test:{ passScore:95, questions:[
+    {level:'Medium', text:"A group of words WITHOUT a subject and verb is a…", choices:["Phrase","Clause","Sentence","Paragraph"], answer:0, explain:"No subject + verb → a phrase."},
+    {level:'Medium', text:"A group of words WITH a subject and a verb is a…", choices:["Clause","Phrase","Letter","Title"], answer:0, explain:"Subject + verb → a clause."},
+    {level:'Medium', text:"'in the dark forest' is a…", choices:["Phrase","Clause","Question","Command"], answer:0, explain:"No subject + verb → phrase."},
+    {level:'Medium', text:"'the fox ran away' is a…", choices:["Clause","Phrase","Title","Word"], answer:0, explain:"Subject 'the fox' + verb 'ran' → clause."},
+    {level:'Medium', text:"The test to tell a phrase from a clause is to look for a…", choices:["subject and a verb","capital letter","full stop","long word"], answer:0, explain:"Look for a subject + verb pair."},
+    {level:'Medium-Hard', text:"Which one is a PHRASE?", choices:["a bottle of dew","she told a story","the birds were singing","Rama worked hard"], answer:0, explain:"'a bottle of dew' has no subject + verb → phrase."},
+    {level:'Medium-Hard', text:"Which one is a CLAUSE?", choices:["the children were playing","under the big tree","in the early morning","a piece of cheese"], answer:0, explain:"'the children were playing' has subject + verb → clause."},
+    {level:'Medium-Hard', text:"'on a tall green branch' is a…", choices:["Phrase","Clause","Sentence","Question"], answer:0, explain:"No subject + verb → phrase."},
+    {level:'Hard', text:"'because he worked very hard' — phrase or clause?", choices:["Clause","Phrase","Title","Word"], answer:0, explain:"It has a subject 'he' + verb 'worked' → a clause."},
+    {level:'Hard', text:"Which option is a CLAUSE (not a phrase)?", choices:["the thief opened the door","near the old temple","a quiet little village","after the long night"], answer:0, explain:"'the thief opened the door' has subject + verb → clause."},
+  ]},
+},
+{
+  id:'english-d5', subject:'english', week:1, day:5, title:'Day 5 · Sentence Types & Converting Them', emoji:'📖',
+  blurb:'Statements, questions, requests, instructions — and changing one into another.',
+  objective:"Identify statements, questions, requests and instructions, and convert a sentence from one type into another.",
+  sections:[
+    {type:'mascot', text:"Last grammar stop! 🛑 We use sentences for different jobs — telling, asking, requesting and instructing. Let's master all four, then learn to switch between them. 🔄"},
+    {type:'text', h:'❓ The four types of sentences (by purpose)', html:"<b>Statement</b> — gives information; ends with a <b>full stop (.)</b>. <i>The fox was clever.</i><br><b>Question</b> — asks something; ends with a <b>question mark (?)</b>. <i>Was the fox clever?</i><br><b>Request</b> — politely asks someone to do/give something; usually starts with <b>'Please'</b> or <b>'Could/Would you'</b>. <i>Please pass the cheese.</i><br><b>Instruction / Command</b> — tells or orders someone to do something; often <b>begins with the verb</b>. <i>Mix the dew in the pot.</i>"},
+    {type:'practice', q:{text:"'Please give me the cheese.' This sentence is a…", choices:["Request","Statement","Question","Instruction"], answer:0, explain:"It politely asks (with 'please') → a request."}},
+    {type:'text', h:'🔄 Converting one type into another', html:"The same idea can be re-shaped for a different purpose:<br><br><b>Statement → Question:</b> bring the helping verb to the front, or add do/does/did. <i>'She is singing.'</i> → <i>'Is she singing?'</i> · <i>'He works hard.'</i> → <i>'Does he work hard?'</i><br><b>Order → polite Request:</b> add 'Please' or 'Could you'. <i>'Give me the book.'</i> → <i>'Could you please give me the book?'</i><br><b>Statement → Instruction:</b> drop the subject and start with the verb. <i>'You should close the door.'</i> → <i>'Close the door.'</i>"},
+    {type:'example', html:"Making a question: 'The raven <b>dropped</b> the cheese.' → '<b>Did</b> the raven <b>drop</b> the cheese?' (the past 'dropped' becomes 'did…drop')."},
+    {type:'practice', q:{text:"Change to a QUESTION: 'The fox is clever.'", choices:["Is the fox clever?","The fox is clever!","Clever fox.","The fox was not clever."], answer:0, explain:"Move 'is' to the front + '?' → Is the fox clever?"}},
+    {type:'mascot', text:"That completes Unit 1! 🌟 Take the final 10-question test (95% to earn your star) and finish English Week 1. ⭐"},
+  ],
+  test:{ passScore:95, questions:[
+    {level:'Medium', text:"A sentence that gives information ends with a…", choices:["full stop","question mark","comma","dash"], answer:0, explain:"A statement ends with a full stop."},
+    {level:'Medium', text:"A sentence that asks something ends with a…", choices:["question mark","full stop","comma","star"], answer:0, explain:"A question ends with a question mark."},
+    {level:'Medium', text:"'Please give me some water.' is a…", choices:["Request","Statement","Question","Instruction"], answer:0, explain:"Polite asking with 'please' → a request."},
+    {level:'Medium', text:"'Open your books to page ten.' is an…", choices:["Instruction (command)","Question","Statement","Request"], answer:0, explain:"It tells someone to do something → an instruction."},
+    {level:'Medium', text:"'The Himalayas are very tall.' is a…", choices:["Statement","Question","Request","Command"], answer:0, explain:"It gives information → a statement."},
+    {level:'Medium-Hard', text:"Change to a QUESTION: 'The raven dropped the cheese.'", choices:["Did the raven drop the cheese?","The raven dropped the cheese!","Drop the cheese.","The raven did not drop it."], answer:0, explain:"Use 'Did … drop?' → Did the raven drop the cheese?"},
+    {level:'Medium-Hard', text:"Turn into a polite REQUEST: 'Give me the pen.'", choices:["Could you please give me the pen?","Give me the pen now!","You gave me the pen.","Did you give the pen?"], answer:0, explain:"A polite request uses 'Could you please…'."},
+    {level:'Medium-Hard', text:"Change to an INSTRUCTION: 'You should water the plants.'", choices:["Water the plants.","Are the plants watered?","The plants are watered.","Water?"], answer:0, explain:"Drop the subject and start with the verb → 'Water the plants.'"},
+    {level:'Hard', text:"Which sentence is a QUESTION?", choices:["Has the fox eaten the cheese?","The fox ate the cheese.","Eat the cheese.","Please eat the cheese."], answer:0, explain:"It asks and ends with '?' → a question."},
+    {level:'Hard', text:"Convert to a question: 'She is reading a story.'", choices:["Is she reading a story?","She is reading a story!","Read a story.","She reads stories."], answer:0, explain:"Move 'is' to the front + '?' → Is she reading a story?"},
   ]},
 },
 {
@@ -406,7 +494,10 @@ function lvlBadge(l){ if(!l) return ''; const m={'Medium':'lvl-med','Medium-Hard
 const subj = id => SUBJECTS.find(s=>s.id===id);
 const lessonsIn = (week,sid) => CURRICULUM.lessons.filter(l=>l.week===week && l.subject===sid);
 function allWeeks(){ return [...new Set(CURRICULUM.lessons.map(l=>l.week))].sort((a,b)=>a-b); }
+function daysIn(week){ const ds=[...new Set(CURRICULUM.lessons.filter(l=>l.week===week).map(l=>l.day||1))].sort((a,b)=>a-b); return ds.length?ds:[1]; }
+const lessonsInDay = (week,day,sid) => CURRICULUM.lessons.filter(l=>l.week===week && (l.day||1)===day && l.subject===sid);
 let currentWeek = allWeeks()[0] || 1;
+let currentDay = 1;
 const app = document.getElementById('app');
 function today(){ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
 
@@ -444,9 +535,16 @@ function renderDashboard(){
   h += `<div class="weeks">` + allWeeks().map(w=>
     `<button class="weektab ${w===currentWeek?'active':''}" data-week="${w}">Week ${w}</button>`).join('') + `</div>`;
 
+  const days = daysIn(currentWeek);
+  if(!days.includes(currentDay)) currentDay = days[0];
+  h += `<div class="weeks daytabs">` + days.map(d=>
+    `<button class="weektab ${d===currentDay?'active':''}" data-day="${d}">📅 Day ${d}</button>`).join('') + `</div>`;
+
+  let anyDay=false;
   SUBJECTS.forEach(s=>{
-    const ls = lessonsIn(currentWeek,s.id);
+    const ls = lessonsInDay(currentWeek,currentDay,s.id);
     if(!ls.length) return;
+    anyDay=true;
     h += `<div class="subjhead"><span class="subjdot" style="background:${s.color}"></span>${s.icon} ${s.name}</div>`;
     h += `<div class="lessons">`;
     ls.forEach(l=>{
@@ -468,12 +566,14 @@ function renderDashboard(){
     });
     h += `</div>`;
   });
+  if(!anyDay) h += `<p class="muted" style="margin-top:18px">No sessions added for this day yet. 🛠️</p>`;
 
   app.innerHTML = h;
   // wire
   document.getElementById('nameIn').addEventListener('change',e=>{store.name=e.target.value;saveStore(store);});
   document.getElementById('reportBtn').addEventListener('click',renderReport);
   app.querySelectorAll('[data-week]').forEach(b=>b.addEventListener('click',()=>{currentWeek=+b.dataset.week;renderDashboard();}));
+  app.querySelectorAll('[data-day]').forEach(b=>b.addEventListener('click',()=>{currentDay=+b.dataset.day;renderDashboard();}));
   app.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>openLesson(b.dataset.open)));
 }
 
@@ -488,7 +588,7 @@ function renderLesson(id){
   const s = subj(l.subject);
   let h = `<div class="crumbs" id="backHome">← Back to dashboard</div>`;
   h += `<div class="card">
-    <h2 class="lessontitle">${l.emoji} ${l.title} <span class="muted" style="font-size:.9rem">· ${s.icon} ${s.name} · Week ${l.week}</span></h2>`;
+    <h2 class="lessontitle">${l.emoji} ${l.title} <span class="muted" style="font-size:.9rem">· ${s.icon} ${s.name} · Week ${l.week} · Day ${l.day||1}</span></h2>`;
   if(l.objective) h += `<div class="objective">🎯 <b>Goal:</b> ${l.objective}</div>`;
 
   (l.sections||[]).forEach((sec,i)=>{
@@ -631,14 +731,20 @@ function renderReport(){
     <span class="x" id="closeRep">✕ Close</span>
     <h2>📊 Weekly Report${store.name?' · '+store.name:''}</h2>`;
   allWeeks().forEach(w=>{
-    const real = CURRICULUM.lessons.filter(l=>l.week===w && !l.comingSoon);
-    if(!real.length){ return; }
-    const mastered = real.filter(l=>prog(l.id).mastered).length;
-    h += `<div class="repsub">🗓️ Week ${w} — ${mastered}/${real.length} mastered</div>`;
-    real.forEach(l=>{
-      const p=prog(l.id); const s=subj(l.subject);
-      const status = p.mastered?`⭐ Mastered (${p.bestScore}%)`:p.opened?(p.bestScore!=null?`In progress · best ${p.bestScore}%`:'Started'):'Not started';
-      h += `<div class="repline"><span>${s.icon} ${s.name} · ${l.title}</span><span class="muted">${status}${p.lastDate?' · '+p.lastDate:''}</span></div>`;
+    const realW = CURRICULUM.lessons.filter(l=>l.week===w && !l.comingSoon);
+    if(!realW.length){ return; }
+    const masteredW = realW.filter(l=>prog(l.id).mastered).length;
+    h += `<div class="repsub" style="font-size:1.05rem;border-top:2px solid var(--line);padding-top:10px">🗓️ Week ${w} — ${masteredW}/${realW.length} sessions mastered</div>`;
+    daysIn(w).forEach(d=>{
+      const real = realW.filter(l=>(l.day||1)===d);
+      if(!real.length) return;
+      const mastered = real.filter(l=>prog(l.id).mastered).length;
+      h += `<div class="repsub">📅 Day ${d} — ${mastered}/${real.length} mastered</div>`;
+      real.forEach(l=>{
+        const p=prog(l.id); const s=subj(l.subject);
+        const status = p.mastered?`⭐ Mastered (${p.bestScore}%)`:p.opened?(p.bestScore!=null?`In progress · best ${p.bestScore}%`:'Started'):'Not started';
+        h += `<div class="repline"><span>${s.icon} ${s.name} · ${l.title}</span><span class="muted">${status}${p.lastDate?' · '+p.lastDate:''}</span></div>`;
+      });
     });
   });
   const st=overallStats();
