@@ -212,7 +212,59 @@ const CURRICULUM = { lessons: [
 },
 
 /* ---------- COMING-SOON SLOTS (Week 1) — give me topics to fill these ---------- */
-{id:'english-w1', subject:'english', week:1, title:'(Your English topic)', emoji:'📖', comingSoon:true, blurb:'Tell me the topic and I will build it.'},
+{
+  id:'english-fables', subject:'english', week:1, title:'Unit 1: Fables & Folk Tales + Grammar', emoji:'📖',
+  blurb:'Poorvi Unit 1 stories & morals, plus sentence types, phrases/clauses, subject & predicate.',
+  objective:"Understand what fables and folk tales are (Poorvi Unit 1), find the moral of a story, and master four grammar skills: subject & predicate, phrases vs clauses, the four sentence types (statement/question/request/instruction), and converting one type into another.",
+  sections:[
+    {type:'mascot', text:"Hello reader! 🦉 Hooty here. Unit 1 is all about <b>fables and folk tales</b> — wise old stories with a lesson hidden inside. We'll meet a clever fox and a hard-working farmer, then sharpen our <b>grammar</b> skills. 📖✨"},
+    {type:'text', h:'📖 1. What are fables and folk tales?', html:"A <b>fable</b> is a short story — often with <b>talking animals</b> — that teaches a <b>moral</b> (a lesson about life).<br>A <b>folk tale</b> is a traditional story <b>passed down by word of mouth</b> through generations. Both carry wisdom from long ago."},
+
+    {type:'text', h:'📚 2. The three tales in Unit 1', html:"<b>A Bottle of Dew</b> — Rama Natha hopes for magic, but learns that <b>hard work</b> is more valuable than any magic.<br><b>The Raven and the Fox</b> — a sly fox flatters a proud raven into singing, and the raven drops its food. Moral: <b>don't be fooled by flattery</b>.<br><b>Rama to the Rescue</b> — Rama and his wife use <b>clever thinking and courage</b> to outsmart a thief."},
+    {type:'example', html:"The <b>moral</b> is the heart of a fable — the lesson you carry home. 'Don't let praise make you careless' is the moral of <i>The Raven and the Fox</i>."},
+    {type:'practice', q:{text:"The lesson or message that a fable teaches is called its…", choices:["Moral","Title","Author","Setting"], answer:0, explain:"The life-lesson of a fable is its moral."}},
+    {type:'practice', q:{text:"In 'A Bottle of Dew', Rama Natha finally learns that ___ is more valuable than magic.", choices:["hard work","money","luck","sleep"], answer:0, explain:"The story's moral: hard work is worth more than magic."}},
+
+    {type:'mascot', text:"Now let's power up our grammar! 💪 Every sentence is built from two parts…"},
+    {type:'text', h:'🧱 3. Subject & Predicate', html:"Every sentence has two parts:<br><b>Subject</b> — who or what the sentence is about.<br><b>Predicate</b> — what is said about the subject (it contains the <b>verb</b>).<br><br>Example: <b>The clever fox</b> | <b>tricked the raven.</b><br>(subject) | (predicate)"},
+    {type:'practice', q:{text:"In 'The greedy thief ran away.', what is the SUBJECT?", choices:["The greedy thief","ran away","ran","away"], answer:0, explain:"The subject is who the sentence is about → The greedy thief."}},
+
+    {type:'text', h:'🔗 4. Phrases & Clauses', html:"A <b>phrase</b> is a group of words that work together but has <b>no subject + verb</b> pair (e.g. <i>in the dark forest</i>, <i>a bottle of dew</i>).<br>A <b>clause</b> is a group of words that <b>has a subject AND a verb</b> (e.g. <i>the raven sang</i>)."},
+    {type:'tip', html:"Quick test: can you spot a <b>subject + a verb</b>? If <b>yes</b> → it's a <b>clause</b>. If <b>no</b> → it's a <b>phrase</b>."},
+    {type:'practice', q:{text:"Is 'under the tall tree' a phrase or a clause?", choices:["Phrase","Clause","Sentence","Paragraph"], answer:0, explain:"No subject + verb pair → it is a phrase."}},
+
+    {type:'text', h:'❓ 5. Types of sentences (by purpose)', html:"<b>Statement</b> — gives information; ends with a full stop. <i>The fox was clever.</i><br><b>Question</b> — asks something; ends with ?. <i>Was the fox clever?</i><br><b>Request</b> — asks politely, often with 'please'. <i>Please pass the cheese.</i><br><b>Instruction / Command</b> — tells someone to do something. <i>Mix the dew in the pot.</i>"},
+    {type:'practice', q:{text:"'Please give me the cheese.' This sentence is a…", choices:["Request","Statement","Question","Exclamation"], answer:0, explain:"It politely asks for something (with 'please') → a request."}},
+
+    {type:'text', h:'🔄 6. Changing one type into another', html:"The same idea can be said in different ways:<br><b>Statement → Question:</b> 'She is singing.' → 'Is she singing?'<br><b>Statement → Request:</b> 'You should close the door.' → 'Please close the door.'<br><b>Order → Polite request:</b> 'Give me the book.' → 'Could you please give me the book?'"},
+    {type:'example', html:"To make a question, move the helping/verb word to the front: 'The raven <b>dropped</b> the cheese.' → '<b>Did</b> the raven drop the cheese?'"},
+    {type:'practice', q:{text:"Change to a QUESTION: 'The fox is clever.'", choices:["Is the fox clever?","The fox is clever!","Clever fox.","The fox was not clever."], answer:0, explain:"Move 'is' to the front and add a question mark → Is the fox clever?"}},
+
+    {type:'mascot', text:"Wonderful! 🌟 You've explored fables and powered up four grammar skills. Ready for your star? Take the Mastery Test — <b>medium → hard</b>, you need <b>95%</b> to master it!"},
+  ],
+  test:{ passScore:95, questions:[
+    {level:'Medium', text:"What is a fable?", choices:["A short story (often with talking animals) that teaches a moral","A long history book","A daily newspaper report","A list of words"], answer:0, explain:"A fable is a short story, often with animals, that teaches a moral."},
+    {level:'Medium', text:"A traditional story passed down by word of mouth through generations is a…", choices:["Folk tale","Textbook","Diary","Letter"], answer:0, explain:"Stories handed down orally are folk tales."},
+    {level:'Medium', text:"The lesson or message that a fable teaches is called its…", choices:["Moral","Title","Author","Setting"], answer:0, explain:"The life-lesson is the moral."},
+    {level:'Medium', text:"In 'The Raven and the Fox', the clever fox fools the proud raven by using…", choices:["Flattery (false praise)","Force","Magic","Money"], answer:0, explain:"The fox flatters the raven into singing, so it drops its food."},
+    {level:'Medium', text:"A sentence that gives information and ends with a full stop is a…", choices:["Statement","Question","Request","Exclamation"], answer:0, explain:"Information + full stop = a statement."},
+    {level:'Medium', text:"A sentence that asks something and ends with a question mark is a…", choices:["Question","Statement","Instruction","Request"], answer:0, explain:"Asks + '?' = a question."},
+    {level:'Medium', text:"A sentence that politely asks for something, often with 'please', is a…", choices:["Request","Statement","Question","Command"], answer:0, explain:"Polite asking (please) = a request."},
+    {level:'Medium-Hard', text:"'Mix the dew and bring the pot to me.' This sentence is an…", choices:["Instruction (command)","Question","Statement","Request"], answer:0, explain:"It tells someone to do something → an instruction/command."},
+    {level:'Medium-Hard', text:"In 'The clever fox tricked the raven', the SUBJECT is…", choices:["The clever fox","tricked the raven","tricked","the raven"], answer:0, explain:"The sentence is about 'The clever fox' → that is the subject."},
+    {level:'Medium-Hard', text:"The part of a sentence that tells what the subject does or is (and contains the verb) is the…", choices:["Predicate","Subject","Phrase","Title"], answer:0, explain:"That part is the predicate."},
+    {level:'Medium-Hard', text:"Is 'in the dark forest' a phrase or a clause?", choices:["Phrase","Clause","Sentence","Paragraph"], answer:0, explain:"No subject + verb → it is a phrase."},
+    {level:'Medium-Hard', text:"'the raven sang loudly' has a subject and a verb, so it is a…", choices:["Clause","Phrase","Single word","Title"], answer:0, explain:"Subject ('the raven') + verb ('sang') = a clause."},
+    {level:'Medium-Hard', text:"In 'A Bottle of Dew', Rama Natha learns that ___ is more valuable than magic.", choices:["hard work","gold","sleep","flattery"], answer:0, explain:"The moral: hard work beats magic."},
+    {level:'Medium-Hard', text:"'Rama to the Rescue' teaches that ___ can save you from danger.", choices:["cleverness and courage","greed","pride","laziness"], answer:0, explain:"Rama and his wife use clever thinking and courage."},
+    {level:'Hard', text:"Change to a QUESTION: 'The raven dropped the cheese.'", choices:["Did the raven drop the cheese?","The raven dropped the cheese!","Drop the cheese, raven.","The raven did not drop the cheese."], answer:0, explain:"Use 'Did' at the front + '?' → Did the raven drop the cheese?"},
+    {level:'Hard', text:"Turn this order into a polite REQUEST: 'Give me the book.'", choices:["Could you please give me the book?","Give me the book now!","You gave me the book.","Did you give the book?"], answer:0, explain:"A polite request uses 'Could you please…'."},
+    {level:'Hard', text:"Which sentence is an INSTRUCTION?", choices:["First, water the plants every day.","Is the plant growing?","The plant is green.","What a tall plant!"], answer:0, explain:"It tells you what to do (a command/instruction)."},
+    {level:'Hard', text:"Which group of words is a CLAUSE (not a phrase)?", choices:["She told a story","under the big tree","a bottle of dew","in the morning"], answer:0, explain:"'She told a story' has a subject + verb → a clause."},
+    {level:'Hard', text:"Identify the PREDICATE in: 'The greedy thief ran away quietly.'", choices:["ran away quietly","The greedy thief","The greedy","thief"], answer:0, explain:"The predicate (with the verb) is 'ran away quietly'."},
+    {level:'Hard', text:"Change the statement into a request using 'please': 'You should open the window.'", choices:["Please open the window.","Did you open the window?","The window is open.","Open?"], answer:0, explain:"A request: 'Please open the window.'"},
+  ]},
+},
 {
   id:'science-diversity', subject:'science', week:1, title:'Diversity in Plants and Animals', emoji:'🌿',
   blurb:'Plant types, leaves, roots, seeds, animal habitats, movement & adaptation.',
