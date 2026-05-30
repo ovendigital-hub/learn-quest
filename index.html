@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learn Quest — Grade 6</title>
+<style>
+  :root{
+    --bg:#f4f7ff; --card:#ffffff; --ink:#27314d; --muted:#6b779a; --line:#e6ebf7;
+    --brand:#5b6cff; --brand2:#8a5bff;
+    --maths:#ff7a59; --english:#3ec1d3; --science:#37c978; --social:#ffb23e; --hindi:#ff5d8f;
+    --good:#37c978; --bad:#ff5d6c; --star:#ffc83d;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Trebuchet MS',system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
+  .wrap{max-width:980px;margin:0 auto;padding:16px}
+  a{color:inherit}
+  button{font-family:inherit;cursor:pointer;border:none}
+
+  /* top bar */
+  .top{display:flex;align-items:center;gap:12px;justify-content:space-between;
+    background:linear-gradient(120deg,var(--brand),var(--brand2));color:#fff;border-radius:18px;padding:16px 20px;margin-bottom:18px}
+  .top h1{margin:0;font-size:1.4rem;display:flex;align-items:center;gap:8px}
+  .top .who{display:flex;align-items:center;gap:8px;font-size:.95rem}
+  .top .who input{border:none;border-radius:8px;padding:6px 10px;font-family:inherit;font-size:.95rem;max-width:130px}
+  .pill{background:rgba(255,255,255,.22);border-radius:20px;padding:6px 12px;font-weight:bold;font-size:.85rem}
+
+  /* stat row */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:18px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;text-align:center}
+  .stat .big{font-size:1.6rem;font-weight:800}
+  .stat .lbl{color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:1px}
+
+  /* week tabs */
+  .weeks{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+  .weektab{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:8px 16px;font-weight:bold;color:var(--muted)}
+  .weektab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+  /* subject group */
+  .subjhead{display:flex;align-items:center;gap:10px;margin:18px 0 10px;font-size:1.1rem;font-weight:800}
+  .subjdot{width:14px;height:14px;border-radius:50%}
+  .lessons{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+  .lesson{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:8px;transition:transform .08s,box-shadow .12s}
+  .lesson:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(91,108,255,.12)}
+  .lesson .emoji{font-size:1.8rem}
+  .lesson h3{margin:0;font-size:1.05rem}
+  .lesson .meta{color:var(--muted);font-size:.82rem;flex:1}
+  .lesson .row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .badge{font-size:.74rem;font-weight:bold;padding:4px 9px;border-radius:20px}
+  .b-new{background:#eef1ff;color:var(--brand)}
+  .b-prog{background:#fff3e0;color:#d98600}
+  .b-master{background:#e7f9ef;color:var(--good)}
+  .b-soon{background:#f0f1f5;color:var(--muted)}
+  .go{background:var(--brand);color:#fff;border-radius:10px;padding:8px 12px;font-weight:bold;font-size:.85rem}
+  .go.soon{background:#e8eaf2;color:var(--muted);cursor:not-allowed}
+  .prog{height:8px;background:#eef1f8;border-radius:6px;overflow:hidden}
+  .prog>i{display:block;height:100%;background:var(--good)}
+
+  .btn{background:var(--brand);color:#fff;border-radius:10px;padding:10px 16px;font-weight:bold}
+  .btn.ghost{background:#eef1ff;color:var(--brand)}
+  .btn.alt{background:var(--ink)}
+  .btn.big{font-size:1.05rem;padding:13px 22px}
+  .btnrow{display:flex;gap:10px;flex-wrap:wrap}
+
+  /* lesson view */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:16px}
+  .crumbs{color:var(--muted);font-size:.85rem;margin-bottom:8px;cursor:pointer}
+  .lessontitle{display:flex;align-items:center;gap:12px;margin:0 0 4px;font-size:1.5rem}
+  .objective{background:#eef1ff;border-radius:12px;padding:12px 14px;color:#41507f;margin:12px 0}
+  .sec{margin:18px 0}
+  .sec h4{margin:0 0 6px;font-size:1.1rem;display:flex;align-items:center;gap:8px}
+  .sec p{margin:6px 0}
+  .example{background:#fff8f3;border-left:4px solid var(--maths);border-radius:10px;padding:12px 14px}
+  .tip{background:#e7f9ef;border-left:4px solid var(--good);border-radius:10px;padding:12px 14px}
+  .mascot{display:flex;gap:10px;align-items:flex-start;background:#f3f0ff;border-radius:12px;padding:12px 14px}
+  .mascot .face{font-size:1.6rem}
+  kbd{background:#eef1f8;border-radius:6px;padding:2px 7px;font-family:inherit;font-weight:bold}
+
+  /* fraction widget */
+  .fracwidget{text-align:center;background:#fbfcff;border:1px dashed var(--line);border-radius:14px;padding:16px}
+  .bar{display:flex;gap:4px;justify-content:center;margin:12px 0;flex-wrap:wrap}
+  .seg{width:42px;height:48px;border-radius:8px;background:#eceffb;border:2px solid #d8def1;cursor:pointer;transition:.1s}
+  .seg.on{background:var(--maths);border-color:#e85c36}
+  .fracval{font-size:2rem;font-weight:800;color:var(--maths)}
+  .ctrls{display:flex;gap:8px;justify-content:center;align-items:center;margin-top:8px}
+  .ctrls button{background:var(--ink);color:#fff;border-radius:8px;width:34px;height:34px;font-size:1.1rem;font-weight:bold}
+
+  /* quiz */
+  .q{border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:12px 0;background:#fff}
+  .q .qtext{font-weight:bold;margin-bottom:10px}
+  .choices{display:flex;flex-direction:column;gap:8px}
+  .choice{display:flex;align-items:center;gap:10px;border:2px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;transition:.1s;background:#fff}
+  .choice:hover{border-color:var(--brand)}
+  .choice.sel{border-color:var(--brand);background:#eef1ff}
+  .choice.correct{border-color:var(--good);background:#e7f9ef}
+  .choice.wrong{border-color:var(--bad);background:#ffeef0}
+  .choice .key{width:26px;height:26px;border-radius:50%;background:#eef1f8;display:flex;align-items:center;justify-content:center;font-weight:bold;flex:0 0 auto}
+  .feedback{margin-top:8px;font-size:.9rem;padding:8px 10px;border-radius:8px}
+  .feedback.ok{background:#e7f9ef;color:#1f8a4c}
+  .feedback.no{background:#ffeef0;color:#c0354a}
+
+  /* result */
+  .result{text-align:center;padding:8px}
+  .scoreRing{font-size:3rem;font-weight:800}
+  .stars{font-size:1.8rem;letter-spacing:4px}
+
+  /* modal */
+  .modal{position:fixed;inset:0;background:rgba(20,26,48,.55);display:flex;align-items:center;justify-content:center;padding:16px;z-index:50}
+  .modal .box{background:#fff;border-radius:18px;max-width:680px;width:100%;max-height:88vh;overflow:auto;padding:22px}
+  .repline{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.92rem}
+  .repsub{font-weight:800;margin:14px 0 4px}
+  .x{float:right;background:#eef1f8;border-radius:8px;padding:6px 10px;font-weight:bold;color:var(--muted)}
+  .hide{display:none}
+  .center{text-align:center}
+  .muted{color:var(--muted)}
+  .confetti{position:fixed;top:-10px;font-size:1.4rem;animation:fall 2.2s linear forwards;z-index:60}
+  @keyframes fall{to{transform:translateY(105vh) rotate(360deg);opacity:.9}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+
+<script>
+/* ============================================================
+   LEARN QUEST — data-driven grade-6 tutorial platform
+   Add lessons to CURRICULUM.lessons. Progress saves in
+   localStorage. Each lesson optionally has a mastery test.
+   ============================================================ */
+
+const SUBJECTS = [
+  {id:'maths',   name:'Maths',          icon:'🔢', color:'var(--maths)'},
+  {id:'english', name:'English',        icon:'📖', color:'var(--english)'},
+  {id:'science', name:'Science',        icon:'🔬', color:'var(--science)'},
+  {id:'social',  name:'Social Studies', icon:'🌍', color:'var(--social)'},
+  {id:'hindi',   name:'Hindi',          icon:'✍️', color:'var(--hindi)'},
+];
+
+const CURRICULUM = { lessons: [
+
+/* ---------- FULL SAMPLE LESSON: MATHS · FRACTIONS (Week 1) ---------- */
+{
+  id:'maths-fractions', subject:'maths', week:1, title:'Fractions', emoji:'🍕',
+  blurb:'Parts of a whole — proper, improper, equivalent & comparing.',
+  objective:"By the end you'll name fractions, tell proper/improper/mixed apart, find equivalent fractions, and add/subtract fractions with the same bottom number.",
+  sections:[
+    {type:'mascot', text:"Hi! I'm <b>Hooty</b> the owl 🦉. Let's slice up some pizzas and master fractions together. Tap things as we go!"},
+    {type:'text', h:'🍕 What is a fraction?', html:"A <b>fraction</b> shows a <b>part of a whole</b>. If we cut a pizza into <b>4 equal slices</b> and take <b>3</b>, we have <b>3/4</b> of the pizza."},
+    {type:'frac'},
+    {type:'text', h:'🔢 The two numbers', html:"The <b>top</b> number is the <b>numerator</b> (how many parts we took). The <b>bottom</b> number is the <b>denominator</b> (how many equal parts in total).<br><br>In <kbd>3/4</kbd> → numerator = <b>3</b>, denominator = <b>4</b>."},
+    {type:'practice', q:{
+      text:"A chocolate bar is split into 5 equal pieces and you eat 2. What fraction did you eat?",
+      choices:["5/2","2/5","2/3","1/5"], answer:1, explain:"2 pieces eaten out of 5 equal pieces = 2/5."}},
+    {type:'text', h:'📏 Types of fractions', html:"<b>Proper</b>: top &lt; bottom (e.g. 3/8) — less than one whole.<br><b>Improper</b>: top ≥ bottom (e.g. 9/4) — one whole or more.<br><b>Mixed</b>: a whole number + a fraction (e.g. 2¼). 9/4 = 2¼."},
+    {type:'example', html:"<b>Improper → Mixed:</b> 7/3 → 3 goes into 7 two times (6) with 1 left over → <b>2 ⅓</b>."},
+    {type:'practice', q:{
+      text:"Which of these is an improper fraction?",
+      choices:["3/7","2/5","9/4","1/2"], answer:2, explain:"9/4 has the top (9) bigger than the bottom (4), so it's improper."}},
+    {type:'text', h:'🟰 Equivalent fractions', html:"Multiply or divide the top AND bottom by the same number and the value stays the same.<br><br><kbd>1/2 = 2/4 = 3/6 = 4/8</kbd> — all the same amount!"},
+    {type:'tip', html:"<b>Simplify</b> by dividing top &amp; bottom by the same number: 6/8 ÷ 2 = <b>3/4</b>."},
+    {type:'text', h:'⚖️ Comparing & adding (same denominator)', html:"With the <b>same bottom number</b>, the bigger top wins: 7/9 &gt; 5/9.<br>To add or subtract, keep the bottom and add/subtract the tops: 2/7 + 3/7 = <b>5/7</b>."},
+    {type:'practice', q:{
+      text:"What is 4/9 + 3/9 ?",
+      choices:["7/18","7/9","1/9","12/9"], answer:1, explain:"Same denominator: add the tops (4+3=7), keep the bottom → 7/9."}},
+    {type:'mascot', text:"Awesome work! 🎉 Ready to earn your star? Take the Mastery Test below. You need <b>80%</b> to master Fractions!"},
+  ],
+  test:{ passScore:80, questions:[
+    {text:"In the fraction 3/7, which number is the numerator?", choices:["7","3","10","21"], answer:1, explain:"The numerator is the TOP number → 3."},
+    {text:"5/5 is equal to…", choices:["0","1","5","½"], answer:1, explain:"When top = bottom, the fraction equals one whole = 1."},
+    {text:"Which one is a PROPER fraction?", choices:["7/4","9/9","3/8","11/2"], answer:2, explain:"Proper = top smaller than bottom → 3/8."},
+    {text:"Which one is an IMPROPER fraction?", choices:["2/5","9/4","3/7","1/2"], answer:1, explain:"Improper = top ≥ bottom → 9/4."},
+    {text:"The mixed number 2⅓ written as an improper fraction is…", choices:["5/3","6/3","7/3","2/3"], answer:2, explain:"2×3 + 1 = 7, over 3 → 7/3."},
+    {text:"Which fraction is EQUIVALENT to 1/2 ?", choices:["2/3","3/6","2/5","4/6"], answer:1, explain:"3/6 = 1/2 (divide top & bottom by 3)."},
+    {text:"Which is greater: 5/9 or 7/9 ?", choices:["5/9","7/9","They are equal","Can't tell"], answer:1, explain:"Same bottom, bigger top wins → 7/9."},
+    {text:"2/7 + 3/7 = ?", choices:["5/14","6/7","5/7","1/7"], answer:2, explain:"Add tops, keep bottom → 5/7."},
+    {text:"6/8 in its simplest form is…", choices:["3/4","2/4","6/8","1/2"], answer:0, explain:"Divide top & bottom by 2 → 3/4."},
+    {text:"4/5 − 1/5 = ?", choices:["3/10","5/5","3/5","4/5"], answer:2, explain:"Subtract tops, keep bottom → 3/5."},
+  ]},
+},
+
+/* ---------- COMING-SOON SLOTS (Week 1) — give me topics to fill these ---------- */
+{id:'english-w1', subject:'english', week:1, title:'(Your English topic)', emoji:'📖', comingSoon:true, blurb:'Tell me the topic and I will build it.'},
+{id:'science-w1', subject:'science', week:1, title:'(Your Science topic)', emoji:'🔬', comingSoon:true, blurb:'Tell me the topic and I will build it.'},
+{id:'social-w1',  subject:'social',  week:1, title:'(Your Social Studies topic)', emoji:'🌍', comingSoon:true, blurb:'Tell me the topic and I will build it.'},
+{id:'hindi-w1',   subject:'hindi',   week:1, title:'(Your Hindi topic)', emoji:'✍️', comingSoon:true, blurb:'Tell me the topic and I will build it.'},
+
+]};
+
+/* ---------------- progress store ---------------- */
+const KEY='learnquest_v1';
+function loadStore(){ try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}} }
+function saveStore(s){ localStorage.setItem(KEY, JSON.stringify(s)); }
+let store = loadStore();
+if(!store.name) store.name = '';
+if(!store.progress) store.progress = {};
+function prog(id){ return store.progress[id] || {opened:false,bestScore:null,attempts:0,mastered:false,lastDate:null}; }
+function setProg(id,patch){ store.progress[id] = Object.assign(prog(id),patch); saveStore(store); }
+
+/* ---------------- helpers ---------------- */
+const subj = id => SUBJECTS.find(s=>s.id===id);
+const lessonsIn = (week,sid) => CURRICULUM.lessons.filter(l=>l.week===week && l.subject===sid);
+function allWeeks(){ return [...new Set(CURRICULUM.lessons.map(l=>l.week))].sort((a,b)=>a-b); }
+let currentWeek = allWeeks()[0] || 1;
+const app = document.getElementById('app');
+function today(){ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+
+function overallStats(){
+  const all = CURRICULUM.lessons.filter(l=>!l.comingSoon);
+  const mastered = all.filter(l=>prog(l.id).mastered).length;
+  const started = all.filter(l=>prog(l.id).opened).length;
+  let scoreSum=0,scoreN=0;
+  all.forEach(l=>{const p=prog(l.id); if(p.bestScore!=null){scoreSum+=p.bestScore;scoreN++;}});
+  return {total:all.length, mastered, started, avg: scoreN? Math.round(scoreSum/scoreN):0};
+}
+
+/* ---------------- views ---------------- */
+function topBar(){
+  return `<div class="top">
+    <h1>🚀 Learn Quest <span style="font-size:.8rem;font-weight:normal;opacity:.85">· Grade 6 · CBSE</span></h1>
+    <div class="who">
+      <span>👋 Hi,</span>
+      <input id="nameIn" placeholder="your name" value="${store.name.replace(/"/g,'&quot;')}">
+      <span class="pill" id="reportBtn" style="cursor:pointer">📊 Weekly Report</span>
+    </div>
+  </div>`;
+}
+
+function renderDashboard(){
+  const st = overallStats();
+  let h = topBar();
+  h += `<div class="stats">
+    <div class="stat"><div class="big">⭐ ${st.mastered}/${st.total}</div><div class="lbl">Lessons mastered</div></div>
+    <div class="stat"><div class="big">📚 ${st.started}</div><div class="lbl">Lessons started</div></div>
+    <div class="stat"><div class="big">🎯 ${st.avg}%</div><div class="lbl">Average test score</div></div>
+    <div class="stat"><div class="big">🗓️ ${allWeeks().length}</div><div class="lbl">Weeks of content</div></div>
+  </div>`;
+
+  h += `<div class="weeks">` + allWeeks().map(w=>
+    `<button class="weektab ${w===currentWeek?'active':''}" data-week="${w}">Week ${w}</button>`).join('') + `</div>`;
+
+  SUBJECTS.forEach(s=>{
+    const ls = lessonsIn(currentWeek,s.id);
+    if(!ls.length) return;
+    h += `<div class="subjhead"><span class="subjdot" style="background:${s.color}"></span>${s.icon} ${s.name}</div>`;
+    h += `<div class="lessons">`;
+    ls.forEach(l=>{
+      const p = prog(l.id);
+      let badge = `<span class="badge b-new">New</span>`;
+      if(l.comingSoon) badge = `<span class="badge b-soon">Coming soon</span>`;
+      else if(p.mastered) badge = `<span class="badge b-master">⭐ Mastered ${p.bestScore}%</span>`;
+      else if(p.opened) badge = `<span class="badge b-prog">In progress${p.bestScore!=null?' · '+p.bestScore+'%':''}</span>`;
+      const go = l.comingSoon
+        ? `<button class="go soon" disabled>Soon</button>`
+        : `<button class="go" data-open="${l.id}">${p.opened?'Continue':'Start'} →</button>`;
+      h += `<div class="lesson">
+        <div class="emoji">${l.emoji}</div>
+        <h3>${l.title}</h3>
+        <div class="meta">${l.blurb||''}</div>
+        <div class="row">${badge}</div>
+        <div class="row">${go}</div>
+      </div>`;
+    });
+    h += `</div>`;
+  });
+
+  app.innerHTML = h;
+  // wire
+  document.getElementById('nameIn').addEventListener('change',e=>{store.name=e.target.value;saveStore(store);});
+  document.getElementById('reportBtn').addEventListener('click',renderReport);
+  app.querySelectorAll('[data-week]').forEach(b=>b.addEventListener('click',()=>{currentWeek=+b.dataset.week;renderDashboard();}));
+  app.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>openLesson(b.dataset.open)));
+}
+
+function openLesson(id){
+  setProg(id,{opened:true,lastDate:today()});
+  renderLesson(id);
+  window.scrollTo(0,0);
+}
+
+function renderLesson(id){
+  const l = CURRICULUM.lessons.find(x=>x.id===id);
+  const s = subj(l.subject);
+  let h = `<div class="crumbs" id="backHome">← Back to dashboard</div>`;
+  h += `<div class="card">
+    <h2 class="lessontitle">${l.emoji} ${l.title} <span class="muted" style="font-size:.9rem">· ${s.icon} ${s.name} · Week ${l.week}</span></h2>`;
+  if(l.objective) h += `<div class="objective">🎯 <b>Goal:</b> ${l.objective}</div>`;
+
+  (l.sections||[]).forEach((sec,i)=>{
+    if(sec.type==='text') h+=`<div class="sec"><h4>${sec.h||''}</h4><p>${sec.html}</p></div>`;
+    else if(sec.type==='example') h+=`<div class="sec"><div class="example">📝 ${sec.html}</div></div>`;
+    else if(sec.type==='tip') h+=`<div class="sec"><div class="tip">💡 ${sec.html}</div></div>`;
+    else if(sec.type==='mascot') h+=`<div class="sec"><div class="mascot"><div class="face">🦉</div><div>${sec.text}</div></div></div>`;
+    else if(sec.type==='frac') h+=`<div class="sec" id="fracMount"></div>`;
+    else if(sec.type==='practice') h+=`<div class="sec" data-practice="${i}"></div>`;
+  });
+
+  h += `<div class="btnrow" style="margin-top:18px">`;
+  if(l.test) h += `<button class="btn big" id="startTest">📝 Take the Mastery Test</button>`;
+  h += `<button class="btn ghost" id="backHome2">Back to dashboard</button></div>`;
+  h += `</div>`;
+  app.innerHTML = h;
+
+  // mount interactive widgets
+  if(document.getElementById('fracMount')) mountFractionWidget(document.getElementById('fracMount'));
+  (l.sections||[]).forEach((sec,i)=>{
+    if(sec.type==='practice'){ mountPractice(app.querySelector(`[data-practice="${i}"]`), sec.q); }
+  });
+  document.getElementById('backHome').addEventListener('click',renderDashboard);
+  document.getElementById('backHome2').addEventListener('click',renderDashboard);
+  if(l.test) document.getElementById('startTest').addEventListener('click',()=>renderTest(id));
+}
+
+/* interactive fraction bar */
+function mountFractionWidget(mount){
+  let denom=4, on=[true,true,true,false];
+  function draw(){
+    const num = on.filter(Boolean).length;
+    mount.innerHTML = `<div class="fracwidget">
+      <div class="muted">Tap slices to shade them!</div>
+      <div class="bar">${on.map((v,i)=>`<div class="seg ${v?'on':''}" data-i="${i}"></div>`).join('')}</div>
+      <div class="fracval">${num}/${denom}</div>
+      <div class="ctrls"><button data-d="-1">−</button><span class="muted">slices: ${denom}</span><button data-d="1">+</button></div>
+    </div>`;
+    mount.querySelectorAll('.seg').forEach(s=>s.addEventListener('click',()=>{const i=+s.dataset.i;on[i]=!on[i];draw();}));
+    mount.querySelectorAll('[data-d]').forEach(b=>b.addEventListener('click',()=>{
+      denom=Math.min(12,Math.max(2,denom+ +b.dataset.d));
+      on=Array.from({length:denom},(_,i)=>i<Math.min(on.filter(Boolean).length,denom));
+      draw();
+    }));
+  }
+  draw();
+}
+
+/* in-lesson practice (instant feedback, not graded) */
+function mountPractice(mount,q){
+  mount.innerHTML = `<div class="q"><div class="qtext">✏️ Quick check: ${q.text}</div>
+    <div class="choices">${q.choices.map((c,i)=>
+      `<div class="choice" data-i="${i}"><span class="key">${'ABCD'[i]}</span><span>${c}</span></div>`).join('')}</div>
+    <div class="feedback hide"></div></div>`;
+  const fb = mount.querySelector('.feedback');
+  let answered=false;
+  mount.querySelectorAll('.choice').forEach(ch=>ch.addEventListener('click',()=>{
+    if(answered) return; answered=true;
+    const i=+ch.dataset.i; const ok=i===q.answer;
+    mount.querySelectorAll('.choice')[q.answer].classList.add('correct');
+    if(!ok) ch.classList.add('wrong');
+    fb.classList.remove('hide'); fb.classList.add(ok?'ok':'no');
+    fb.innerHTML = (ok?'✅ Correct! ':'❌ Not quite. ')+q.explain;
+  }));
+}
+
+/* mastery test */
+function renderTest(id){
+  const l = CURRICULUM.lessons.find(x=>x.id===id);
+  const qs = l.test.questions;
+  let h = `<div class="crumbs" id="backLesson">← Back to lesson</div>`;
+  h += `<div class="card"><h2 class="lessontitle">📝 Mastery Test · ${l.title}</h2>
+    <p class="muted">Answer all ${qs.length} questions. Score <b>${l.test.passScore}%+</b> to master this lesson and earn your ⭐.</p>`;
+  qs.forEach((q,qi)=>{
+    h += `<div class="q" data-q="${qi}"><div class="qtext">${qi+1}. ${q.text}</div>
+      <div class="choices">${q.choices.map((c,i)=>
+        `<div class="choice" data-q="${qi}" data-i="${i}"><span class="key">${'ABCD'[i]}</span><span>${c}</span></div>`).join('')}</div></div>`;
+  });
+  h += `<div class="btnrow"><button class="btn big" id="submitTest">Submit answers ✓</button>
+    <button class="btn ghost" id="backLesson2">Back to lesson</button></div></div>`;
+  app.innerHTML = h; window.scrollTo(0,0);
+
+  const picks = {};
+  app.querySelectorAll('.choice').forEach(ch=>ch.addEventListener('click',()=>{
+    const qi=+ch.dataset.q;
+    app.querySelectorAll(`.choice[data-q="${qi}"]`).forEach(c=>c.classList.remove('sel'));
+    ch.classList.add('sel'); picks[qi]=+ch.dataset.i;
+  }));
+  document.getElementById('backLesson').addEventListener('click',()=>renderLesson(id));
+  document.getElementById('backLesson2').addEventListener('click',()=>renderLesson(id));
+  document.getElementById('submitTest').addEventListener('click',()=>{
+    if(Object.keys(picks).length<qs.length){ alert('Please answer all questions first! 🙂'); return; }
+    gradeTest(id,picks);
+  });
+}
+
+function gradeTest(id,picks){
+  const l = CURRICULUM.lessons.find(x=>x.id===id);
+  const qs = l.test.questions;
+  let correct=0;
+  qs.forEach((q,qi)=>{ if(picks[qi]===q.answer) correct++; });
+  const score = Math.round(correct/qs.length*100);
+  const passed = score>=l.test.passScore;
+  const p = prog(id);
+  const best = p.bestScore==null?score:Math.max(p.bestScore,score);
+  setProg(id,{attempts:p.attempts+1,bestScore:best,mastered:p.mastered||passed,lastDate:today()});
+  if(passed) burstConfetti();
+
+  const stars = passed ? (score===100?'⭐⭐⭐':score>=90?'⭐⭐':'⭐') : '☆☆☆';
+  let h = `<div class="card result">
+    <div class="stars">${stars}</div>
+    <div class="scoreRing" style="color:${passed?'var(--good)':'var(--bad)'}">${score}%</div>
+    <h2>${passed?'🎉 Mastered!':'💪 Almost there!'}</h2>
+    <p class="muted">You got <b>${correct}/${qs.length}</b> correct. ${passed?'Brilliant work!':'Review the answers below and try again — you need '+l.test.passScore+'%.'}</p>
+    <div class="btnrow center" style="justify-content:center">
+      <button class="btn" id="retry">↻ Try again</button>
+      <button class="btn alt" id="toLesson">Back to lesson</button>
+      <button class="btn ghost" id="toHome">Dashboard</button>
+    </div>
+  </div>`;
+  h += `<div class="card"><h3>Review</h3>`;
+  qs.forEach((q,qi)=>{
+    const mine=picks[qi], ok=mine===q.answer;
+    h += `<div class="q"><div class="qtext">${ok?'✅':'❌'} ${qi+1}. ${q.text}</div>
+      <div class="choices">${q.choices.map((c,i)=>{
+        let cls='choice'; if(i===q.answer)cls+=' correct'; else if(i===mine)cls+=' wrong';
+        return `<div class="${cls}"><span class="key">${'ABCD'[i]}</span><span>${c}</span></div>`;}).join('')}</div>
+      <div class="feedback ok" style="background:#f3f5ff;color:#41507f">💡 ${q.explain}</div></div>`;
+  });
+  h += `</div>`;
+  app.innerHTML = h; window.scrollTo(0,0);
+  document.getElementById('retry').addEventListener('click',()=>renderTest(id));
+  document.getElementById('toLesson').addEventListener('click',()=>renderLesson(id));
+  document.getElementById('toHome').addEventListener('click',renderDashboard);
+}
+
+/* weekly report (parent view) */
+function renderReport(){
+  let h = `<div class="modal" id="modal"><div class="box">
+    <span class="x" id="closeRep">✕ Close</span>
+    <h2>📊 Weekly Report${store.name?' · '+store.name:''}</h2>`;
+  allWeeks().forEach(w=>{
+    const real = CURRICULUM.lessons.filter(l=>l.week===w && !l.comingSoon);
+    if(!real.length){ return; }
+    const mastered = real.filter(l=>prog(l.id).mastered).length;
+    h += `<div class="repsub">🗓️ Week ${w} — ${mastered}/${real.length} mastered</div>`;
+    real.forEach(l=>{
+      const p=prog(l.id); const s=subj(l.subject);
+      const status = p.mastered?`⭐ Mastered (${p.bestScore}%)`:p.opened?(p.bestScore!=null?`In progress · best ${p.bestScore}%`:'Started'):'Not started';
+      h += `<div class="repline"><span>${s.icon} ${s.name} · ${l.title}</span><span class="muted">${status}${p.lastDate?' · '+p.lastDate:''}</span></div>`;
+    });
+  });
+  const st=overallStats();
+  h += `<div class="repsub">Overall</div>
+    <div class="repline"><span>Lessons mastered</span><span>⭐ ${st.mastered}/${st.total}</span></div>
+    <div class="repline"><span>Average test score</span><span>${st.avg}%</span></div>
+    <div class="btnrow" style="margin-top:16px"><button class="btn ghost" id="resetAll">Reset all progress</button></div>
+  </div></div>`;
+  document.body.insertAdjacentHTML('beforeend',h);
+  document.getElementById('closeRep').addEventListener('click',()=>document.getElementById('modal').remove());
+  document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')e.target.remove();});
+  document.getElementById('resetAll').addEventListener('click',()=>{
+    if(confirm('Reset ALL progress for everyone? This cannot be undone.')){
+      store.progress={}; saveStore(store); document.getElementById('modal').remove(); renderDashboard();
+    }
+  });
+}
+
+function burstConfetti(){
+  const e=['🎉','⭐','🎊','🌟','✨','🏆'];
+  for(let i=0;i<26;i++){ const s=document.createElement('div'); s.className='confetti';
+    s.textContent=e[i%e.length]; s.style.left=Math.random()*100+'vw';
+    s.style.animationDelay=(Math.random()*0.5)+'s'; document.body.appendChild(s);
+    setTimeout(()=>s.remove(),2800); }
+}
+
+renderDashboard();
+</script>
+</body>
+</html>
