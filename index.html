@@ -213,7 +213,66 @@ const CURRICULUM = { lessons: [
 
 /* ---------- COMING-SOON SLOTS (Week 1) — give me topics to fill these ---------- */
 {id:'english-w1', subject:'english', week:1, title:'(Your English topic)', emoji:'📖', comingSoon:true, blurb:'Tell me the topic and I will build it.'},
-{id:'science-w1', subject:'science', week:1, title:'(Your Science topic)', emoji:'🔬', comingSoon:true, blurb:'Tell me the topic and I will build it.'},
+{
+  id:'science-diversity', subject:'science', week:1, title:'Diversity in Plants and Animals', emoji:'🌿',
+  blurb:'Plant types, leaves, roots, seeds, animal habitats, movement & adaptation.',
+  objective:"Explore the variety of living things — herbs/shrubs/trees, climbers & creepers, leaf venation, roots, monocot/dicot seeds, animal habitats, how animals move, and how living things adapt to where they live.",
+  sections:[
+    {type:'mascot', text:"Hi again! 🦉 It's Hooty. Today we explore the amazing <b>variety of living things</b> — from tiny herbs to tall trees, and from fish to camels. Let's go on a nature safari! 🌿🐾"},
+    {type:'text', h:'🌍 1. Diversity all around us', html:"Look around — there are countless kinds of plants and animals! Scientists <b>group living things</b> by their features so they are easier to study. Let's begin with plants."},
+
+    {type:'text', h:'🌱 2. Types of plants (by stem)', html:"<b>Herbs</b> — small plants with a soft, green stem (e.g. <i>mint, tomato, grass, wheat</i>).<br><b>Shrubs</b> — medium plants with a hard woody stem branching near the ground (e.g. <i>rose, lemon, henna</i>).<br><b>Trees</b> — tall and big with a thick, hard woody trunk (e.g. <i>mango, neem, banyan</i>)."},
+    {type:'text', h:'🧗 Weak-stem plants: climbers & creepers', html:"Some plants have a <b>weak stem</b> that cannot stand on its own.<br><b>Climbers</b> — climb up using a support (e.g. <i>money plant, grapevine, pea</i>).<br><b>Creepers</b> — spread along the ground (e.g. <i>pumpkin, watermelon, sweet potato</i>)."},
+    {type:'example', html:"Memory trick: <b>Climbers Climb up</b> ⬆️, <b>Creepers Crawl on the ground</b> ➡️."},
+    {type:'practice', q:{text:"A rose plant with a medium, hard woody stem branching near the ground is a…", choices:["Herb","Shrub","Tree","Creeper"], answer:1, explain:"Medium height + woody stem branching near the base = a shrub (e.g. rose)."}},
+    {type:'practice', q:{text:"A pumpkin plant that spreads along the ground is a…", choices:["Climber","Creeper","Tree","Herb"], answer:1, explain:"Weak stem spreading on the ground = creeper (e.g. pumpkin, watermelon)."}},
+
+    {type:'text', h:'🍃 3. Leaves: venation patterns', html:"The lines on a leaf are called <b>veins</b>, and their pattern is the <b>venation</b>.<br><b>Reticulate venation</b> — a <b>net-like</b> pattern (e.g. <i>mango, peepal, rose, hibiscus</i>).<br><b>Parallel venation</b> — veins run <b>side by side</b> (e.g. <i>grass, wheat, maize, banana</i>)."},
+    {type:'practice', q:{text:"A grass leaf has veins running side by side. This is…", choices:["Reticulate venation","Parallel venation","No venation","Random venation"], answer:1, explain:"Side-by-side veins = parallel venation (grass, wheat, banana)."}},
+
+    {type:'text', h:'🌿 4. Roots: taproot & fibrous', html:"<b>Taproot</b> — one main thick root with smaller side roots (e.g. <i>carrot, radish, mustard, gram</i>).<br><b>Fibrous roots</b> — many thin roots of similar size, with no single main root (e.g. <i>grass, wheat, maize, onion</i>)."},
+    {type:'tip', html:"Cool link! Leaves and roots go together: <b>reticulate venation → taproot</b>, and <b>parallel venation → fibrous roots</b>."},
+    {type:'practice', q:{text:"A carrot is an example of which kind of root?", choices:["Fibrous root","Taproot","Climbing root","No root"], answer:1, explain:"A carrot is one main thick root = taproot."}},
+
+    {type:'text', h:'🌰 5. Seeds: monocots & dicots', html:"<b>Dicot seeds</b> split into <b>TWO</b> halves called cotyledons (e.g. <i>gram/chana, bean, pea, peanut</i>).<br><b>Monocot seeds</b> have only <b>ONE</b> part and do not split (e.g. <i>maize, wheat, rice</i>)."},
+    {type:'tip', html:"The big pattern: <b>Dicot</b> = two seed-halves → reticulate leaves → taproot. <b>Monocot</b> = one seed-part → parallel leaves → fibrous roots."},
+    {type:'practice', q:{text:"A gram (chana) seed splits into two halves. It is a…", choices:["Monocot","Dicot","Tricot","Not a seed"], answer:1, explain:"Two cotyledons (halves) = dicot seed."}},
+
+    {type:'text', h:'🐾 6. Animals & their habitats', html:"A <b>habitat</b> is the place where a plant or animal lives.<br><b>Terrestrial</b> animals live on <b>land</b> (e.g. <i>cow, lion, camel, ant</i>).<br><b>Aquatic</b> animals live in <b>water</b> (e.g. <i>fish, whale, octopus</i>).<br>Some, like the <b>frog</b>, live both on land and in water (amphibians)."},
+    {type:'practice', q:{text:"A fish lives in water, so it is a/an ___ animal.", choices:["Terrestrial","Aquatic","Aerial","Desert"], answer:1, explain:"Lives in water = aquatic animal."}},
+
+    {type:'text', h:'🏃 7. How animals move', html:"Animals move in many ways:<br>🦵 <b>Walk / run</b> with legs — dog, horse<br>🐦 <b>Fly</b> with wings — birds, butterfly<br>🐟 <b>Swim</b> with fins — fish<br>🐍 <b>Crawl / slither</b> — snake, snail<br>🐸 <b>Hop / jump</b> — frog, kangaroo"},
+    {type:'practice', q:{text:"A snake has no legs. How does it move?", choices:["Flies","Swims with fins","Crawls / slithers","Hops"], answer:2, explain:"Snakes move by crawling/slithering using their body muscles."}},
+
+    {type:'text', h:'🐫 8. Adaptation', html:"<b>Adaptation</b> means the special features that help a living thing <b>survive in its habitat</b>.<br>🐫 Camel — hump stores fat; long legs &amp; wide feet for hot sand.<br>🐟 Fish — streamlined body, gills to breathe in water, fins to swim.<br>🌵 Cactus — spines instead of leaves and a thick stem to store water in the desert."},
+    {type:'example', html:"A <b>polar bear</b> has thick white fur to stay warm and hidden in the snow — that's adaptation to a cold habitat. ❄️"},
+    {type:'practice', q:{text:"A cactus has spines instead of leaves and a thick stem. This helps it…", choices:["Look pretty","Store water and lose less water in the desert","Move faster","Make sounds"], answer:1, explain:"Spines reduce water loss and the thick stem stores water — an adaptation to the dry desert."}},
+
+    {type:'mascot', text:"What a journey! 🌟 You've explored plants, leaves, roots, seeds, animals and adaptation. Ready for your star? Take the Mastery Test — <b>medium → hard</b>, and you need <b>95%</b> to master it!"},
+  ],
+  test:{ passScore:95, questions:[
+    {level:'Medium', text:"A small plant with a soft, green stem is called a…", choices:["Herb","Shrub","Tree","Climber"], answer:0, explain:"Soft green stem + small size = herb (e.g. mint, grass)."},
+    {level:'Medium', text:"Which of these is a TREE?", choices:["Rose","Mango","Mint","Money plant"], answer:1, explain:"Tall with a thick woody trunk = tree → mango."},
+    {level:'Medium', text:"A money plant climbs up using a support. It is a…", choices:["Climber","Creeper","Herb","Shrub"], answer:0, explain:"Weak stem that climbs with support = climber."},
+    {level:'Medium', text:"A watermelon plant spreads along the ground. It is a…", choices:["Climber","Creeper","Tree","Herb"], answer:1, explain:"Weak stem spreading on the ground = creeper."},
+    {level:'Medium', text:"The lines seen on a leaf are called…", choices:["Veins","Roots","Stems","Seeds"], answer:0, explain:"The lines on a leaf are veins; their pattern is venation."},
+    {level:'Medium', text:"A net-like pattern of veins on a leaf is called…", choices:["Reticulate venation","Parallel venation","Fibrous venation","No venation"], answer:0, explain:"Net-like = reticulate venation (mango, rose)."},
+    {level:'Medium', text:"Which plant has PARALLEL venation?", choices:["Mango","Grass","Rose","Hibiscus"], answer:1, explain:"Grass (like wheat & banana) has parallel venation."},
+    {level:'Medium-Hard', text:"A radish is an example of which kind of root?", choices:["Fibrous root","Taproot","Climbing root","No root"], answer:1, explain:"One main thick root = taproot (carrot, radish)."},
+    {level:'Medium-Hard', text:"Wheat has many thin roots of similar size. These are…", choices:["Fibrous roots","A taproot","Climbing roots","No roots"], answer:0, explain:"Many thin similar roots, no main one = fibrous roots."},
+    {level:'Medium-Hard', text:"A bean seed splits into two halves. It is a…", choices:["Monocot","Dicot","Tricot","Not a seed"], answer:1, explain:"Two cotyledons = dicot seed."},
+    {level:'Medium-Hard', text:"A maize seed has only one cotyledon. It is a…", choices:["Monocot","Dicot","Both","Neither"], answer:0, explain:"One cotyledon, does not split = monocot."},
+    {level:'Medium-Hard', text:"Which row is correctly matched?", choices:["Monocot → parallel venation → fibrous roots","Dicot → parallel venation → fibrous roots","Monocot → reticulate venation → taproot","Dicot → parallel venation → taproot"], answer:0, explain:"Monocots have parallel venation AND fibrous roots."},
+    {level:'Medium-Hard', text:"The place where an animal lives is called its…", choices:["Habitat","Adaptation","Movement","Venation"], answer:0, explain:"Habitat = the place where a living thing lives."},
+    {level:'Medium-Hard', text:"A whale lives in water. It is a/an ___ animal.", choices:["Aquatic","Terrestrial","Aerial","Desert"], answer:0, explain:"Lives in water = aquatic."},
+    {level:'Hard', text:"Birds have wings. They move mainly by…", choices:["Swimming","Flying","Crawling","Hopping"], answer:1, explain:"Wings → flying."},
+    {level:'Hard', text:"A leaf shows parallel venation. The plant most likely has ___ and is a ___.", choices:["fibrous roots, monocot","a taproot, dicot","fibrous roots, dicot","a taproot, monocot"], answer:0, explain:"Parallel venation goes with fibrous roots and monocot seeds."},
+    {level:'Hard', text:"A camel's hump and wide feet, which help it live in the desert, are examples of…", choices:["Habitat","Adaptation","Venation","Movement"], answer:1, explain:"Special survival features = adaptation."},
+    {level:'Hard', text:"Which group contains ONLY climbers?", choices:["Grapevine, pea, money plant","Mango, neem, banyan","Pumpkin, watermelon, sweet potato","Rose, lemon, henna"], answer:0, explain:"Grapevine, pea and money plant all climb with support = climbers."},
+    {level:'Hard', text:"A gram (chana) seed splits into two halves. What leaf venation and root type would you expect?", choices:["Reticulate venation, taproot","Parallel venation, fibrous roots","Parallel venation, taproot","Reticulate venation, fibrous roots"], answer:0, explain:"Dicot → reticulate venation → taproot."},
+    {level:'Hard', text:"A fish has a streamlined body, gills and fins that help it live in water. These features are its…", choices:["Adaptations","Habitat","Movements","Veins"], answer:0, explain:"Features that help survival in a habitat = adaptations."},
+  ]},
+},
 {id:'social-w1',  subject:'social',  week:1, title:'(Your Social Studies topic)', emoji:'🌍', comingSoon:true, blurb:'Tell me the topic and I will build it.'},
 {id:'hindi-w1',   subject:'hindi',   week:1, title:'(Your Hindi topic)', emoji:'✍️', comingSoon:true, blurb:'Tell me the topic and I will build it.'},
 
