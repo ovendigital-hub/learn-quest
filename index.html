@@ -117,6 +117,9 @@
   .repline{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.92rem}
   .repsub{font-weight:800;margin:14px 0 4px}
   .x{float:right;background:#eef1f8;border-radius:8px;padding:6px 10px;font-weight:bold;color:var(--muted)}
+  .sharearea{width:100%;min-height:74px;resize:vertical;font-family:ui-monospace,Consolas,monospace;font-size:.8rem;
+    border:1px solid var(--line);border-radius:10px;padding:10px;background:#f7f9ff;color:var(--ink);word-break:break-all}
+  .sharearea:focus{outline:none;border-color:var(--brand)}
   .hide{display:none}
   .center{text-align:center}
   .muted{color:var(--muted)}
@@ -861,7 +864,7 @@ function saveStore(s){ localStorage.setItem(KEY, JSON.stringify(s)); }
 let store = loadStore();
 if(!store.name) store.name = 'Aarav';
 if(!store.progress) store.progress = {};
-function prog(id){ return store.progress[id] || {opened:false,bestScore:null,attempts:0,mastered:false,lastDate:null}; }
+function prog(id,s){ s=s||store; return (s.progress&&s.progress[id]) || {opened:false,bestScore:null,attempts:0,mastered:false,lastDate:null}; }
 function setProg(id,patch){ store.progress[id] = Object.assign(prog(id),patch); saveStore(store); }
 
 /* ---------------- helpers ---------------- */
@@ -876,12 +879,13 @@ let currentDay = 1;
 const app = document.getElementById('app');
 function today(){ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
 
-function overallStats(){
+function overallStats(s){
+  s=s||store;
   const all = CURRICULUM.lessons.filter(l=>!l.comingSoon);
-  const mastered = all.filter(l=>prog(l.id).mastered).length;
-  const started = all.filter(l=>prog(l.id).opened).length;
+  const mastered = all.filter(l=>prog(l.id,s).mastered).length;
+  const started = all.filter(l=>prog(l.id,s).opened).length;
   let scoreSum=0,scoreN=0;
-  all.forEach(l=>{const p=prog(l.id); if(p.bestScore!=null){scoreSum+=p.bestScore;scoreN++;}});
+  all.forEach(l=>{const p=prog(l.id,s); if(p.bestScore!=null){scoreSum+=p.bestScore;scoreN++;}});
   return {total:all.length, mastered, started, avg: scoreN? Math.round(scoreSum/scoreN):0};
 }
 
@@ -893,6 +897,7 @@ function topBar(){
       <span>👋 Hi,</span>
       <input id="nameIn" placeholder="your name" value="${store.name.replace(/"/g,'&quot;')}">
       <span class="pill" id="reportBtn" style="cursor:pointer">📊 Weekly Report</span>
+      <span class="pill" id="shareBtn" style="cursor:pointer">🔗 Share</span>
     </div>
   </div>`;
 }
@@ -946,7 +951,8 @@ function renderDashboard(){
   app.innerHTML = h;
   // wire
   document.getElementById('nameIn').addEventListener('change',e=>{store.name=e.target.value;saveStore(store);});
-  document.getElementById('reportBtn').addEventListener('click',renderReport);
+  document.getElementById('reportBtn').addEventListener('click',()=>renderReport());
+  document.getElementById('shareBtn').addEventListener('click',renderShare);
   app.querySelectorAll('[data-week]').forEach(b=>b.addEventListener('click',()=>{currentWeek=+b.dataset.week;renderDashboard();}));
   app.querySelectorAll('[data-day]').forEach(b=>b.addEventListener('click',()=>{currentDay=+b.dataset.day;renderDashboard();}));
   app.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>openLesson(b.dataset.open)));
@@ -1102,40 +1108,120 @@ function gradeTest(id,picks){
 }
 
 /* weekly report (parent view) */
-function renderReport(){
+function renderReport(opts){
+  const ro = !!(opts && opts.readOnly);
+  const ds = ro ? opts.data : store;            // data store to read from
+  const esc = t => String(t==null?'':t).replace(/</g,'&lt;');
+  const nm = ds && ds.name ? ' · '+esc(ds.name) : '';
+  let banner = '';
+  if(ro){
+    const meta = opts.meta||{};
+    banner = `<div style="background:#eef1ff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:6px 0 12px;font-size:.88rem">
+      👀 Viewing <b>shared</b> progress${ds&&ds.name?` for <b>${esc(ds.name)}</b>`:''}${meta.exportedAt?` · exported ${esc(meta.exportedAt)}`:''}.<br>
+      This is a read-only snapshot from another computer — it does not change your own data.</div>`;
+  }
   let h = `<div class="modal" id="modal"><div class="box">
     <span class="x" id="closeRep">✕ Close</span>
-    <h2>📊 Weekly Report${store.name?' · '+store.name:''}</h2>`;
+    <h2>📊 Weekly Report${nm}</h2>${banner}`;
   allWeeks().forEach(w=>{
     const realW = CURRICULUM.lessons.filter(l=>l.week===w && !l.comingSoon);
     if(!realW.length){ return; }
-    const masteredW = realW.filter(l=>prog(l.id).mastered).length;
+    const masteredW = realW.filter(l=>prog(l.id,ds).mastered).length;
     h += `<div class="repsub" style="font-size:1.05rem;border-top:2px solid var(--line);padding-top:10px">🗓️ Week ${w} — ${masteredW}/${realW.length} sessions mastered</div>`;
     daysIn(w).forEach(d=>{
       const real = realW.filter(l=>(l.day||1)===d);
       if(!real.length) return;
-      const mastered = real.filter(l=>prog(l.id).mastered).length;
+      const mastered = real.filter(l=>prog(l.id,ds).mastered).length;
       h += `<div class="repsub">📅 Day ${d} — ${mastered}/${real.length} mastered</div>`;
       real.forEach(l=>{
-        const p=prog(l.id); const s=subj(l.subject);
+        const p=prog(l.id,ds); const s=subj(l.subject);
         const status = p.mastered?`⭐ Mastered (${p.bestScore}%)`:p.opened?(p.bestScore!=null?`In progress · best ${p.bestScore}%`:'Started'):'Not started';
         h += `<div class="repline"><span>${s.icon} ${s.name} · ${l.title}</span><span class="muted">${status}${p.lastDate?' · '+p.lastDate:''}</span></div>`;
       });
     });
   });
-  const st=overallStats();
+  const st=overallStats(ds);
   h += `<div class="repsub">Overall</div>
     <div class="repline"><span>Lessons mastered</span><span>⭐ ${st.mastered}/${st.total}</span></div>
-    <div class="repline"><span>Average test score</span><span>${st.avg}%</span></div>
-    <div class="btnrow" style="margin-top:16px"><button class="btn ghost" id="resetAll">Reset all progress</button></div>
-  </div></div>`;
+    <div class="repline"><span>Average test score</span><span>${st.avg}%</span></div>`;
+  if(!ro){
+    h += `<div class="btnrow" style="margin-top:16px"><button class="btn ghost" id="resetAll">Reset all progress</button></div>`;
+  }
+  h += `</div></div>`;
   document.body.insertAdjacentHTML('beforeend',h);
   document.getElementById('closeRep').addEventListener('click',()=>document.getElementById('modal').remove());
   document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')e.target.remove();});
-  document.getElementById('resetAll').addEventListener('click',()=>{
-    if(confirm('Reset ALL progress for everyone? This cannot be undone.')){
-      store.progress={}; saveStore(store); document.getElementById('modal').remove(); renderDashboard();
-    }
+  if(!ro){
+    document.getElementById('resetAll').addEventListener('click',()=>{
+      if(confirm('Reset ALL progress for everyone? This cannot be undone.')){
+        store.progress={}; saveStore(store); document.getElementById('modal').remove(); renderDashboard();
+      }
+    });
+  }
+}
+
+/* ---- Manual share-code: export progress here, view it on another computer ---- */
+function makeShareCode(){
+  const payload = { app:'learnquest', v:1, exportedAt: today(), name: store.name||'', store: store };
+  return btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+}
+function parseShareCode(code){
+  const obj = JSON.parse(decodeURIComponent(escape(atob(String(code).replace(/\s+/g,'')))));
+  if(!obj || obj.app!=='learnquest' || !obj.store) throw new Error('Not a Learn Quest progress code');
+  return obj;
+}
+function renderShare(){
+  const code = makeShareCode();
+  const h = `<div class="modal" id="shareModal"><div class="box">
+    <span class="x" id="closeShare">✕ Close</span>
+    <h2>🔗 Share / View progress</h2>
+    <p class="muted" style="margin-top:0">Progress is saved only in this browser. To check it on another computer, <b>export</b> a code here and <b>load</b> it there.</p>
+
+    <div class="repsub" style="border-top:2px solid var(--line);padding-top:10px">⬆️ On the STUDENT's computer — export</div>
+    <p style="font-size:.88rem;margin:4px 0 8px">Copy this code (or download the file) and send it to the parent on WhatsApp / email.</p>
+    <textarea id="shareCode" class="sharearea" readonly>${code}</textarea>
+    <div class="btnrow" style="margin-top:8px">
+      <button class="btn" id="copyCode">📋 Copy code</button>
+      <button class="btn ghost" id="dlCode">💾 Download file</button>
+    </div>
+
+    <div class="repsub" style="border-top:2px solid var(--line);padding-top:10px;margin-top:18px">📥 On the PARENT's computer — view</div>
+    <p style="font-size:.88rem;margin:4px 0 8px">Paste the code below (or choose the downloaded file), then tap <b>View report</b>.</p>
+    <textarea id="loadCode" class="sharearea" placeholder="Paste the code here…"></textarea>
+    <div class="btnrow" style="margin-top:8px">
+      <button class="btn alt" id="viewShared">📊 View report</button>
+      <label class="btn ghost" style="cursor:pointer">📂 Choose file<input type="file" id="loadFile" accept=".json,.txt,text/plain" style="display:none"></label>
+    </div>
+    <div id="shareMsg" class="muted" style="margin-top:8px;font-size:.86rem"></div>
+  </div></div>`;
+  document.body.insertAdjacentHTML('beforeend',h);
+  const close=()=>{const m=document.getElementById('shareModal'); if(m) m.remove();};
+  const msg=(t,bad)=>{const m=document.getElementById('shareMsg'); if(!m) return; m.textContent=t; m.style.color=bad?'var(--bad)':'var(--muted)';};
+  document.getElementById('closeShare').addEventListener('click',close);
+  document.getElementById('shareModal').addEventListener('click',e=>{if(e.target.id==='shareModal')close();});
+  document.getElementById('copyCode').addEventListener('click',()=>{
+    const ta=document.getElementById('shareCode'); ta.select(); ta.setSelectionRange(0,99999);
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(ta.value).then(()=>msg('✓ Code copied — send it to the parent.')).catch(()=>{document.execCommand('copy');msg('✓ Code copied.');});
+    } else { document.execCommand('copy'); msg('✓ Code copied.'); }
+  });
+  document.getElementById('dlCode').addEventListener('click',()=>{
+    const blob=new Blob([code],{type:'text/plain'});
+    const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+    a.download='learnquest-progress-'+String(store.name||'student').replace(/[^A-Za-z0-9]+/g,'_')+'.txt';
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+    msg('✓ File downloaded — send it to the parent.');
+  });
+  document.getElementById('loadFile').addEventListener('change',e=>{
+    const f=e.target.files&&e.target.files[0]; if(!f) return;
+    const r=new FileReader(); r.onload=()=>{ document.getElementById('loadCode').value=String(r.result||'').trim(); msg('File loaded — now tap “View report”.'); }; r.readAsText(f);
+  });
+  document.getElementById('viewShared').addEventListener('click',()=>{
+    const v=document.getElementById('loadCode').value;
+    if(!v||!v.trim()){ msg('Paste a code first, or choose the file.',true); return; }
+    let obj; try{ obj=parseShareCode(v); }catch(err){ msg('That code could not be read. Make sure you pasted the whole thing.',true); return; }
+    close();
+    renderReport({readOnly:true, data:obj.store, meta:obj});
   });
 }
 
